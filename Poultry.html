@@ -28,8 +28,8 @@
 
         .egg {
             position: absolute;
-            width: 30px;
-            height: 40px;
+            width: 40px;
+            height: 50px;
             background-image: url('https://freepngimg.com/thumb/egg/6-egg-png-image.png');
             background-size: contain;
             background-repeat: no-repeat;
@@ -102,6 +102,44 @@
             to {
                 transform: rotateX(360deg) rotateY(360deg);
             }
+        }
+
+        .search-bar {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            transform: translateY(0%);
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            background-color: #333333;
+            color: #ffffff;
+            width: 150px;
+            margin-right: 5px;
+        }
+
+        .search-bar button {
+            padding: 8px 10px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            background-color: #444444;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar button:hover {
+            background-color: #555555;
         }
 
         nav {
@@ -226,6 +264,10 @@
         <div class="top"></div>
         <div class="bottom"></div>
     </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
     <!-- Egg Rain Animation -->
     <div class="egg"></div>
     <div class="egg" style="animation-delay: 1s;"></div>
@@ -252,30 +294,37 @@
         </p>
         <h3>Building a Chicken Coop</h3>
         <p>
-            <strong>Materials and Tools:</strong><br>To build a basic chicken coop, you will need the following materials: Lumber, hardware cloth, screws and nails, hinges and latches, roofing material, and paint or wood sealant. Tools required include a tape measure, saw, drill, hammer, screwdriver, and more.
+            <strong>Materials and Tools:</strong><br>To build a basic chicken coop, you will need the following materials:
+            Lumber, hardware cloth, screws and nails, hinges and latches, roofing material, and paint or wood sealant.
         </p>
         <p>
-            <strong>Coop Size and Measurements:</strong><br>The size of your chicken coop depends on the number of hens you plan to keep. A general rule of thumb is to allow at least 4 square feet of floor space per hen inside the coop, and 8-10 square feet per hen in an outdoor run. Recommended coop sizes vary based on flock size.
+            <strong>Coop Size and Measurements:</strong><br>The size of your chicken coop depends on the number of hens you plan to keep. A general rule of thumb is to allow at least 4 square feet of floor space per hen inside the coop, and 8-10 square feet per hen in an outdoor run.
+        </p>
+        <p>
+            <strong>Providing Access to Clean Water and Food:</strong><br>Clean water and food are crucial for the health and productivity of your hens. Use hanging or nipple waterers, gravity feeders, and ensure they are placed away from nesting boxes and roosting areas to minimize contamination.
+        </p>
+        <p>
+            <strong>The Importance of Roosting Places:</strong><br>Roosting places are essential for hens to sleep comfortably and safely. Install roost bars that are at least 2 inches wide, with rounded edges for comfort.
         </p>
     </section>
 
-    <!-- Part 2 -->
+    <!-- Part 2: Hen Behavior and Management (Collapsible) -->
     <section class="collapsible-section">
         <h2 class="collapsible-header">Part 2: Hen Behavior and Management</h2>
         <div class="collapsible-content">
-            <p class="preview">Understanding hen behavior is essential for managing a healthy flock...</p>
+            <p class="preview">Understanding the natural hierarchy and egg-laying behavior of hens...</p>
             <p class="full-content">
                 <strong>Understanding Hen Pecking Order:</strong><br>The pecking order is a natural hierarchy established within a flock of hens. This social structure determines access to resources such as food, water, and roosting spots.
-                <br><strong>Egg-Laying Behavior and Nesting Boxes:</strong><br>Hens typically begin laying eggs around 18-24 weeks of age. Providing a comfortable and secure environment for egg laying is essential to encourage regular and healthy egg production.
+                <br><strong>Egg-Laying Behavior and Nesting Boxes:</strong><br>Hens typically begin laying eggs around 18-24 weeks of age, although this can vary by breed. Providing a comfortable and secure environment for egg laying is essential to encourage regular and healthy egg production.
             </p>
         </div>
     </section>
 
-    <!-- Part 3 -->
+    <!-- Part 3: Nutrition and Feeding (Collapsible) -->
     <section class="collapsible-section">
-        <h2 class="collapsible-header">Part 3: Nutrition, Feeding, and Processing Timelines</h2>
+        <h2 class="collapsible-header">Part 3: Nutrition, Feeding, and Timelines for Growing and Processing</h2>
         <div class="collapsible-content">
-            <p class="preview">Proper nutrition and feeding are key to healthy poultry...</p>
+            <p class="preview">Proper nutrition is vital for maintaining the health and productivity of your poultry...</p>
             <p class="full-content">
                 <strong>Feed Requirements for Jersey Giants and Ayam Cemani:</strong><br>Proper nutrition is vital for maintaining the health and productivity of your hens. A balanced diet ensures that hens have the energy and nutrients they need for egg production, growth, and overall well-being.
                 <br><strong>Timelines for Growing and Processing:</strong><br>The time it takes for chickens to reach maturity and the best time to process them depends on the breed and the purpose (egg-laying or meat production).
@@ -283,7 +332,7 @@
         </div>
     </section>
 
-    <!-- Part 4 -->
+    <!-- Part 4: Sunlight, Free-Range Time, and Coop Sanitation (Collapsible) -->
     <section class="collapsible-section">
         <h2 class="collapsible-header">Part 4: Sunlight, Free-Range Time, and Coop Sanitation</h2>
         <div class="collapsible-content">
@@ -318,6 +367,21 @@
             }
         });
     });
+
+    // Egg Rain Animation
+    function createEgg() {
+        const header = document.getElementById('header');
+        const egg = document.createElement('div');
+        egg.className = 'egg';
+        egg.style.left = `${Math.random() * 100}%`;
+        header.appendChild(egg);
+
+        setTimeout(() => {
+            egg.remove();
+        }, 5000); // Matches the duration of the animation
+    }
+
+    setInterval(createEgg, 1000); // Adjust this value for more or fewer eggs
 </script>
 
 </body>
