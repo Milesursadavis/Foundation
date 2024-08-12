@@ -3,34 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Herbalism - Community of the Black Cube</title>
+    <title>North American Herbalism and Remedies Guide - Community of the Black Cube</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Embedded Styles -->
     <style>
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #121212;
             color: #e0e0e0;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
+
         header {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 2em;
-            letter-spacing: 0.1em;
+            position: relative;
+            font-family: 'Merriweather', serif;
+            overflow: hidden;
+            height: 400px;
         }
+
+        .leaf {
+            position: absolute;
+            width: 20px; /* Adjusted size to look like a leaf */
+            height: 30px;
+            background-color: #228B22; /* Leaf color */
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        .mushroom {
+            position: absolute;
+            width: 20px; /* Adjusted size to look like a mushroom */
+            height: 30px;
+            background-color: #B22222; /* Mushroom color */
+            border-radius: 50%;
+            opacity: 0;
+            animation: popInOut 4s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        @keyframes popInOut {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        .cube {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto; /* Center the cube horizontally */
+            transform-style: preserve-3d;
+            animation: spin 20s infinite linear;
+            position: relative;
+            top: 100px;
+        }
+
+        .cube div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border: 1px solid #333;
+        }
+
+        .cube .front  { transform: translateZ(30px); }
+        .cube .back   { transform: rotateY(180deg) translateZ(30px); }
+        .cube .right  { transform: rotateY(90deg) translateZ(30px); }
+        .cube .left   { transform: rotateY(-90deg) translateZ(30px); }
+        .cube .top    { transform: rotateX(90deg) translateZ(30px); }
+        .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+        @keyframes spin {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to   { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 120px 0 10px; /* Significantly lowered the title */
+            color: #000000;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        h1:hover {
+            transform: rotate(-3deg) translateX(2px);
+            animation: shake 0.7s; /* Increased shake duration */
+            animation-iteration-count: 1;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-10px, -10px); }
+            20% { transform: translate(10px, 10px); }
+            30% { transform: translate(-10px, 10px); }
+            40% { transform: translate(10px, -10px); }
+            50% { transform: translate(-10px, -10px); }
+            60% { transform: translate(10px, 10px); }
+            70% { transform: translate(-10px, 10px); }
+            80% { transform: translate(10px, -10px); }
+            90% { transform: translate(-10px, -10px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .search-bar {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            transform: translateY(0%);
+            display: flex; /* Use flexbox to align items */
+            align-items: center;
+            margin-bottom: 20px; /* Space below the search bar */
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            background-color: #333333;
+            color: #ffffff;
+            width: 150px;
+            margin-right: 5px; /* Space between input and button */
+        }
+
+        .search-bar button {
+            padding: 8px 10px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            background-color: #444444;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex; /* Align icon inside button */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar button:hover {
+            background-color: #555555;
+        }
+
         nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
             background-color: #333333;
-            padding: 15px 0;
+            padding: 10px 0;
+            align-items: center;
         }
+
         nav a {
             color: #e0e0e0;
-            padding: 15px 25px;
+            padding: 8px 15px;
             text-decoration: none;
             text-transform: uppercase;
             margin: 5px;
@@ -39,361 +198,300 @@
             transition: background-color 0.3s ease;
             flex: 1 1 auto;
             text-align: center;
-            min-width: 120px;
-            font-family: 'Georgia', serif;
+            min-width: 100px;
         }
-        nav a:hover {
+
+        nav a:hover, .dropdown:hover .dropbtn {
             background-color: #555555;
         }
-        main {
-            padding: 30px;
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444444;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #e0e0e0;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
             text-align: left;
-            font-family: 'Georgia', serif;
         }
-        h1 {
-            font-size: 2em;
-            margin: 0;
-            padding: 20px 0;
-            text-align: center;
+
+        .dropdown-content a:hover {
+            background-color: #555555;
         }
-        h2 {
-            color: #e0e0e0;
-            font-size: 1.75em;
-            margin-top: 30px;
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
-        h3 {
-            color: #e0e0e0;
-            font-size: 1.5em;
-            margin-top: 20px;
+
+        main {
+            padding: 20px;
+            text-align: left;
         }
-        p {
-            margin: 20px 0;
+
+        .introduction {
+            background-color: #333;
             color: #d0d0d0;
-            font-size: 1.1em;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
-        ul {
-            margin: 20px 0;
-            padding-left: 20px;
+
+        .introduction p {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            text-align: justify;
         }
-        li {
+
+        .collapsible-section {
+            background-color: #333;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .collapsible-header {
+            font-size: 1.5em;
+            color: #e0e0e0;
+            padding: 15px;
+            cursor: pointer;
+            background-color: #444;
+            margin: 0;
+        }
+
+        .collapsible-content {
+            padding: 15px;
+            display: none; /* Initially hidden */
+            background-color: #555;
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        .collapsible-content p {
             margin: 10px 0;
         }
 
-        /* Responsive Design */
+        /* Text preview styles */
+        .collapsible-content .preview {
+            display: inline;
+        }
+
+        .collapsible-content.expanded .preview {
+            display: none; /* Hide the preview once expanded */
+        }
+
+        .collapsible-content.expanded .full-content {
+            display: block;
+        }
+
+        .collapsible-content .full-content {
+            display: none;
+        }
+
+        /* Hover effects */
+        .collapsible-header:hover {
+            background-color: #555;
+        }
+
         @media (max-width: 768px) {
             header {
-                font-size: 1.5em;
+                padding: 20px 10px;
             }
+
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .search-bar input[type="text"] {
+                width: 100%;
+            }
+
             nav {
                 flex-direction: column;
-                padding: 10px 0;
             }
+
             nav a {
-                margin: 5px 0;
+                flex: 1 1 auto;
             }
-            h1 {
-                font-size: 1.75em;
+
+            .collapsible-header {
+                font-size: 1.2em;
             }
-            h2 {
-                font-size: 1.5em;
-            }
-            h3 {
-                font-size: 1.25em;
+
+            .collapsible-content {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Herbalism</h1>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="poultry.html">Poultry</a>
-        <a href="herbalism.html">Herbalism</a>
-        <a href="#guides">Essential Guides and Planning</a>
-        <a href="#magic">Magic of the Black Cube</a>
-        <a href="#philosophy">Philosophy of the Black Cube</a>
-        <a href="#psychology">Psychology of the Black Cube</a>
-        <a href="#recruitment">Recruitment</a>
-    </nav>
-    <main>
-        <h2>Part 1: Introduction to Herbalism</h2>
-        <p>This section introduces the key principles of North American herbalism, focusing on medicinal plants that can be grown in Oklahoma and their applications.</p>
-        
-        <h2>Part 1: Introduction and Key Concepts</h2>
 
-<h3>Introduction to North American Herbalism</h3>
-<p>Herbalism has been a cornerstone of natural medicine in North America for centuries. From the indigenous tribes who first inhabited the continent to modern-day herbalists, the use of medicinal plants has been integral in treating ailments and maintaining overall health. This guide explores the rich tradition of North American herbalism, providing insight into the various plants native to the region and their healing properties.</p>
+<!-- Search Bar -->
+<div class="search-bar">
+    <input type="text" placeholder="Search...">
+    <button type="submit"><i class="fas fa-search"></i></button>
+</div>
 
-<h3>Key Principles of Herbalism</h3>
-<p>Herbalism is guided by several key principles that are crucial for anyone looking to explore or practice this ancient art. Understanding these principles is the foundation for effectively using medicinal plants in daily life:</p>
-<ul>
-    <li><strong>Holistic Approach:</strong> Herbalism treats the body as a whole, rather than focusing solely on symptoms. The goal is to restore balance and harmony within the body, mind, and spirit.</li>
-    <li><strong>Use of Whole Plants:</strong> Unlike conventional medicine, which often isolates active compounds, herbalism uses whole plants to harness the full spectrum of their medicinal properties.</li>
-    <li><strong>Prevention Over Cure:</strong> Herbalism emphasizes prevention, using plants to strengthen the body's natural defenses and maintain health.</li>
-    <li><strong>Respect for Nature:</strong> Herbalists work in harmony with nature, recognizing the importance of sustainable harvesting and the ethical use of natural resources.</li>
-</ul>
+<!-- Enhanced Header with 3D Cube, Leaf and Mushroom Animation -->
+<header id="header">
+    <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+    <h1>North American Herbalism and Remedies Guide</h1>
+</header>
 
-<h3>Guidelines for Growing Medicinal Plants in North America</h3>
-<p>Growing medicinal plants requires an understanding of their specific needs and the conditions in which they thrive. North America's diverse climates offer a range of opportunities for cultivating these plants, whether in home gardens or larger agricultural settings. Here are some general guidelines to get started:</p>
-<ul>
-    <li><strong>Climate Consideration:</strong> Choose plants that are suited to your local climate. Some plants thrive in cooler regions, while others require warmer temperatures.</li>
-    <li><strong>Soil Preparation:</strong> Ensure the soil is well-drained and rich in organic matter. Many medicinal plants prefer slightly acidic to neutral pH levels.</li>
-    <li><strong>Watering Practices:</strong> Regular watering is essential, but avoid waterlogging the roots. Different plants have varying water requirements, so it's important to understand the needs of each species.</li>
-    <li><strong>Sustainable Harvesting:</strong> Practice sustainable harvesting techniques to ensure that plants continue to thrive. This includes rotating crops, using organic fertilizers, and avoiding over-harvesting.</li>
-</ul>
+<!-- Navigation Bar with Subcategories -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="#guides">Essential Guides and Planning</a>
+    <a href="#magic">Magic of the Black Cube</a>
+    <a href="#philosophy">Philosophy of the Black Cube</a>
+    <a href="#psychology">Psychology of the Black Cube</a>
+    <a href="#recruitment">Recruitment</a>
+</nav>
 
-<h2>Part 2: Medicinal Plants and Their Benefits</h2>
+<!-- Main Content Section -->
+<main>
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <p>Herbalism has been a cornerstone of natural medicine in North America for centuries. From the indigenous tribes who first inhabited the continent to modern-day herbalists, the use of medicinal plants has been integral in treating ailments and maintaining overall health. This guide explores the rich tradition of North American herbalism, providing insight into the various plants native to the region and their healing properties.</p>
+    </section>
 
-<h3>Echinacea (Echinacea purpurea)</h3>
-<p>Echinacea, also known as purple coneflower, is one of the most well-known medicinal plants native to North America. Traditionally used by indigenous tribes to treat infections and wounds, Echinacea is now commonly used to boost the immune system and reduce the duration of colds and flu.</p>
-<ul>
-    <li><strong>Benefits:</strong></li>
-    <ul>
-        <li>Immune system support</li>
-        <li>Anti-inflammatory properties</li>
-        <li>Antioxidant effects</li>
-    </ul>
-    <li><strong>Growing Instructions:</strong> Echinacea thrives in full sun and well-drained soil. It is drought-tolerant and can be grown in various climates, making it an excellent addition to any herbal garden.</li>
-</ul>
+    <!-- Collapsible Sections for Detailed Information -->
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Introduction and Key Concepts</h2>
+        <div class="collapsible-content">
+            <p class="preview">Explore the key principles of North American herbalism and how they can be applied...</p>
+            <p class="full-content">
+                <strong>Introduction to North American Herbalism:</strong><br>
+                Herbalism has been a cornerstone of natural medicine in North America for centuries. From the indigenous tribes who first inhabited the continent to modern-day herbalists, the use of medicinal plants has been integral in treating ailments and maintaining overall health.<br><br>
+                <strong>Key Principles of Herbalism:</strong><br>
+                1. Holistic Approach: Herbalism treats the body as a whole, rather than focusing solely on symptoms.<br>
+                2. Use of Whole Plants: Herbalism uses whole plants to harness the full spectrum of their medicinal properties.<br>
+                3. Prevention Over Cure: Herbalism emphasizes prevention, using plants to strengthen the body's natural defenses.<br>
+                4. Respect for Nature: Herbalists work in harmony with nature, recognizing the importance of sustainable harvesting.
+            </p>
+        </div>
+    </section>
 
-<h3>Goldenseal (Hydrastis canadensis)</h3>
-<p>Goldenseal is a perennial herb with a rich history of medicinal use. Native Americans used it as a treatment for skin diseases, digestive issues, and as a general tonic. Today, it is known for its antibacterial and anti-inflammatory properties, often used in combination with echinacea to enhance immune function.</p>
-<ul>
-    <li><strong>Benefits:</strong></li>
-    <ul>
-        <li>Antibacterial and antifungal properties</li>
-        <li>Supports digestive health</li>
-        <li>Anti-inflammatory effects</li>
-    </ul>
-    <li><strong>Growing Instructions:</strong> Goldenseal prefers shady, moist environments similar to its natural woodland habitat. It is a slow-growing plant, typically requiring three to five years to reach maturity.</li>
-</ul>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Medicinal Plants and Their Benefits</h2>
+        <div class="collapsible-content">
+            <p class="preview">Discover the medicinal plants native to North America and their benefits...</p>
+            <p class="full-content">
+                <strong>Echinacea (Echinacea purpurea):</strong><br>
+                Echinacea, also known as purple coneflower, is used to boost the immune system and reduce the duration of colds and flu.<br><br>
+                <strong>Goldenseal (Hydrastis canadensis):</strong><br>
+                Goldenseal is known for its antibacterial and anti-inflammatory properties.<br><br>
+                <strong>Yarrow (Achillea millefolium):</strong><br>
+                Yarrow is known for its ability to stop bleeding and heal wounds, as well as its anti-inflammatory and pain-relieving effects.<br><br>
+                <strong>Black Cohosh (Actaea racemosa):</strong><br>
+                Black Cohosh is known for its ability to alleviate symptoms of menopause, menstrual discomfort, and hormonal imbalances.<br><br>
+                <strong>American Ginseng (Panax quinquefolius):</strong><br>
+                American Ginseng helps the body resist stress and improves overall vitality.
+            </p>
+        </div>
+    </section>
 
-<h3>Yarrow (Achillea millefolium)</h3>
-<p>Yarrow has been used for thousands of years for its medicinal properties. It is known for its ability to stop bleeding and heal wounds, as well as its anti-inflammatory and pain-relieving effects. Yarrow is also used to reduce fever, improve circulation, and as a digestive aid.</p>
-<ul>
-    <li><strong>Benefits:</strong></li>
-    <ul>
-        <li>Wound healing</li>
-        <li>Anti-inflammatory properties</li>
-        <li>Reduces fever</li>
-    </ul>
-    <li><strong>Growing Instructions:</strong> Yarrow is a hardy plant that thrives in full sun and well-drained soil. It is drought-tolerant and can grow in a variety of conditions, making it easy to cultivate.</li>
-</ul>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Remedies and Applications</h2>
+        <div class="collapsible-content">
+            <p class="preview">Learn how to create tinctures, herbal teas, and salves using medicinal plants...</p>
+            <p class="full-content">
+                <strong>Making Tinctures:</strong><br>
+                Tinctures are concentrated herbal extracts made by soaking the bark, berries, leaves, or roots from one or more plants in alcohol or vinegar.<br><br>
+                <strong>Making Herbal Teas:</strong><br>
+                Herbal teas are one of the simplest ways to use medicinal herbs.<br><br>
+                <strong>Making Salves:</strong><br>
+                Salves are soothing balms made with infused oils, beeswax, and essential oils.
+            </p>
+        </div>
+    </section>
 
-<h3>Black Cohosh (Actaea racemosa)</h3>
-<p>Black Cohosh is a perennial herb native to North America, traditionally used by Native American tribes for various ailments, particularly those related to women’s health. It is known for its ability to alleviate symptoms of menopause, menstrual discomfort, and hormonal imbalances.</p>
-<ul>
-    <li><strong>Benefits:</strong></li>
-    <ul>
-        <li>Relieves menopause symptoms</li>
-        <li>Supports hormonal balance</li>
-        <li>Anti-inflammatory properties</li>
-    </ul>
-    <li><strong>Growing Instructions:</strong> Black Cohosh prefers shady woodland environments with moist, rich soil. It can take several years to mature, but once established, it is a hardy and low-maintenance plant.</li>
-</ul>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Cultivation and Sustainability</h2>
+        <div class="collapsible-content">
+            <p class="preview">Explore sustainable practices for cultivating medicinal plants...</p>
+            <p class="full-content">
+                <strong>Best Practices for Sustainable Herbal Farming:</strong><br>
+                Sustainable farming practices include crop rotation, organic fertilization, and water conservation techniques.<br><br>
+                <strong>Harvesting and Storage:</strong><br>
+                Proper harvesting and storage techniques are crucial for maintaining the potency of medicinal herbs.
+            </p>
+        </div>
+    </section>
 
-<h3>American Ginseng (Panax quinquefolius)</h3>
-<p>American Ginseng is one of the most revered medicinal plants in North America, known for its adaptogenic properties. It helps the body resist stress and improves overall vitality. Ginseng is also used to support immune function, boost energy levels, and enhance mental clarity.</p>
-<ul>
-    <li><strong>Benefits:</strong></li>
-    <ul>
-        <li>Adaptogen (resists stress)</li>
-        <li>Enhances energy and mental clarity</li>
-        <li>Supports immune function</li>
-    </ul>
-    <li><strong>Growing Instructions:</strong> American Ginseng grows best in cool, shaded environments with rich, well-drained soil. It is a slow-growing plant that can take several years to reach maturity, but it is highly valued for its medicinal properties.</li>
-</ul>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Integration and Modern Uses</h2>
+        <div class="collapsible-content">
+            <p class="preview">Incorporate herbalism into your daily life with these tips and case studies...</p>
+            <p class="full-content">
+                <strong>Incorporating Herbalism into Daily Life:</strong><br>
+                Herbalism can be easily integrated into daily life by using herbal remedies, cooking with medicinal herbs, and incorporating them into self-care routines.<br><br>
+                <strong>Case Studies and Examples:</strong><br>
+                Case studies on how herbalism is used in both rural and urban settings.
+            </p>
+        </div>
+    </section>
+</main>
 
-<h2>Part 3: Remedies and Applications</h2>
+<script>
+    // Leaf and Mushroom Animation
+    function createLeafOrMushroom() {
+        const header = document.getElementById('header');
+        const element = document.createElement('div');
+        const isLeaf = Math.random() > 0.5;
 
-<h3>Making Tinctures</h3>
-<p>Tinctures are concentrated herbal extracts made by soaking the bark, berries, leaves, or roots from one or more plants in alcohol or vinegar. The alcohol pulls out the active ingredients in the plant parts, concentrating them as a liquid.</p>
-<h4>How to Make a Tincture:</h4>
-<ul>
-    <li><strong>Choose Your Herb:</strong> Select herbs such as Echinacea, Goldenseal, or Yarrow.</li>
-    <li><strong>Prepare the Herb:</strong> Chop or grind the herb and place it in a glass jar.</li>
-    <li><strong>Add Alcohol or Vinegar:</strong> Cover the herb completely with alcohol (vodka is commonly used) or apple cider vinegar.</li>
-    <li><strong>Seal and Store:</strong> Seal the jar tightly and store it in a cool, dark place for 4-6 weeks, shaking it daily.</li>
-    <li><strong>Strain and Bottle:</strong> After 4-6 weeks, strain the liquid through cheesecloth into a clean jar, then transfer it to a dark glass bottle for storage. Label the bottle with the herb name and date.</li>
-</ul>
+        element.className = isLeaf ? 'leaf' : 'mushroom';
+        element.style.top = `${Math.random() * 100}%`;
+        element.style.left = `${Math.random() * 100}%`;
+        header.appendChild(element);
 
-<h3>Making Herbal Teas</h3>
-<p>Herbal teas, or infusions, are one of the simplest ways to use medicinal herbs. They provide soothing therapeutic effects and are easy to prepare.</p>
-<h4>How to Make an Herbal Tea:</h4>
-<ul>
-    <li><strong>Select Your Herbs:</strong> Common choices include Yarrow, Black Cohosh, and American Ginseng.</li>
-    <li><strong>Prepare the Tea:</strong> Place 1-2 teaspoons of dried herbs or a small handful of fresh herbs into a tea infuser or directly into a cup.</li>
-    <li><strong>Add Boiling Water:</strong> Pour boiling water over the herbs.</li>
-    <li><strong>Steep and Serve:</strong> Cover the cup and let it steep for 5-10 minutes. Strain and enjoy the tea.</li>
-</ul>
+        setTimeout(() => {
+            element.remove();
+        }, isLeaf ? 2000 : 4000);
+    }
 
-<h3>Making Salves</h3>
-<p>Salves are soothing balms made with infused oils, beeswax, and essential oils. They are  used to heal and protect the skin.</p>
-<h4>How to Make a Salve:</h4>
-<ul>
-    <li><strong>Infuse the Oil:</strong> Infuse your chosen herbs (e.g., Calendula, Comfrey) in a carrier oil by soaking them in the oil for several weeks or gently heating them.</li>
-    <li><strong>Strain the Oil:</strong> After the infusion period, strain the oil into a clean jar.</li>
-    <li><strong>Melt Beeswax:</strong> Melt beeswax in a double boiler and add it to the infused oil.</li>
-    <li><strong>Mix and Pour:</strong> Stir until well combined and pour the mixture into tins or jars. Allow it to cool and harden before sealing.</li>
-</ul>
+    setInterval(createLeafOrMushroom, 100);
 
-<h2>Part 4: Cultivation and Sustainability</h2>
+    // Collapsible Sections Functionality
+    const headers = document.querySelectorAll('.collapsible-header');
 
-<h3>Best Practices for Sustainable Herbal Farming</h3>
-<p>Sustainable farming practices ensure that medicinal plants can be cultivated without harming the environment. This includes crop rotation, organic fertilization, and water conservation techniques.</p>
-<ul>
-    <li><strong>Crop Rotation:</strong> Rotating crops prevents soil depletion and reduces the need for chemical fertilizers. For example, after growing heavy feeders like Echinacea, consider planting nitrogen-fixing plants such as clover or beans.</li>
-    <li><strong>Organic Fertilization:</strong> Use compost, aged manure, and other natural fertilizers to nourish the soil without introducing harmful chemicals. This practice enhances soil fertility and supports healthy plant growth.</li>
-    <li><strong>Water Conservation:</strong> Implement drip irrigation systems to reduce water usage and prevent soil erosion. Mulching around plants can help retain moisture and reduce the need for frequent watering.</li>
-</ul>
+    headers.forEach(header => {
+        header.addEventListener('click', function () {
+            const content = this.nextElementSibling;
+            const fullContent = content.querySelector('.full-content');
+            const isExpanded = content.classList.toggle('expanded');
 
-<h3>Harvesting and Storage</h3>
+            if (isExpanded) {
+                fullContent.style.display = 'block';
+                content.style.display = 'block';
+                content.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                fullContent.style.display = 'none';
+                content.style.display = 'none';
+            }
+        });
+    });
+</script>
 
-<h4>Harvesting:</h4>
-<ul>
-    <li><strong>Timing:</strong> Pick herbs at their peak potency, usually in the morning after the dew has dried but before the sun becomes too hot.</li>
-    <li><strong>Tools:</strong> Use sharp scissors or knives to harvest herbs cleanly and efficiently, minimizing damage to the plants.</li>
-</ul>
-
-<h4>Drying:</h4>
-<ul>
-    <li><strong>Method:</strong> Hang herbs in small bunches in a warm, well-ventilated area away from direct sunlight. Alternatively, use a dehydrator set to a low temperature.</li>
-    <li><strong>Duration:</strong> Allow herbs to dry completely, which can take several days to weeks depending on the herb and drying conditions.</li>
-</ul>
-
-<h4>Storage:</h4>
-<ul>
-    <li><strong>Containers:</strong> Store dried herbs in glass jars, metal tins, or other airtight containers to protect them from moisture, light, and air.</li>
-    <li><strong>Labeling:</strong> Clearly label each container with the herb name and the date of harvest to track freshness.</li>
-    <li><strong>Environment:</strong> Keep the containers in a cool, dark place to preserve the herbs' potency.</li>
-</ul>
-
-<h2>Part 5: Integration and Modern Uses</h2>
-
-<h3>Incorporating Herbalism into Daily Life</h3>
-<p>Herbalism can be easily integrated into daily life by using herbal remedies for common ailments, cooking with medicinal herbs, and incorporating them into self-care routines.</p>
-
-<h4>Herbal Remedies:</h4>
-<ul>
-    <li><strong>Apothecary:</strong> Keep a small apothecary of commonly used tinctures, teas, and salves for quick access when needed. Popular choices might include Echinacea tincture for immune support, Yarrow salve for wound healing, and Ginseng tea for energy.</li>
-</ul>
-
-<h4>Cooking:</h4>
-<ul>
-    <li><strong>Culinary Herbs:</strong> Use culinary herbs like basil, thyme, and rosemary not only for their flavor but also for their health benefits. For example, rosemary has antioxidant properties and thyme can support respiratory health.</li>
-    <li><strong>Infusions:</strong> Incorporate herbal infusions into recipes, such as adding chamomile tea to a soup or using lavender-infused honey in desserts.</li>
-</ul>
-
-<h3>Case Studies and Examples</h3>
-
-<h4>Case Study 1: Home Herbal Garden</h4>
-<p>A small suburban household uses a combination of Echinacea, Yarrow, and Black Cohosh in their home garden. By following sustainable practices like composting and rainwater collection, they manage to maintain a year-round supply of these herbs for family use.</p>
-
-<h4>Case Study 2: Herbal Remedies in Urban Settings</h4>
-<p>An urban resident grows herbs like mint, basil, and lemon balm in small containers on a balcony. They create tinctures and teas for personal use, demonstrating that even limited space can support herbal practices.</p>
-
-<h3>Soil and Water Requirements</h3>
-
-<ul>
-    <li><strong>Echinacea (Echinacea purpurea):</strong></li>
-    <ul>
-        <li><strong>Soil:</strong> Well-drained, sandy or loamy soil with a pH between 6.0 and 7.0.</li>
-        <li><strong>Water:</strong> Moderate watering; ensure the soil is moist but not waterlogged. Drought-tolerant once established.</li>
-    </ul>
-    <li><strong>Goldenseal (Hydrastis canadensis):</strong></li>
-    <ul>
-        <li><strong>Soil:</strong> Rich, loamy soil with a high organic content. Prefers a pH between 5.5 and 6.5.</li>
-        <li><strong>Water:</strong> Requires consistently moist soil. Does not tolerate drought well.</li>
-    </ul>
-    <li><strong>Yarrow (Achillea millefolium):</strong></li>
-    <ul>
-        <li><strong>Soil:</strong> Well-drained, sandy or loamy soil with a pH between 4.8 and 8.0.</li>
-        <li><strong>Water:</strong> Drought-tolerant. Requires minimal watering once established.</li>
-    </ul>
-    <li><strong>Black Cohosh (Actaea racemosa):</strong></li>
-    <ul>
-        <li><strong>Soil:</strong> Moist, rich, and well-drained soil with a pH between 5.5 and 6.5.</li>
-        <li><strong>Water:</strong> Needs consistent moisture, especially during the growing season.</li>
-    </ul>
-    <li><strong>American Ginseng (Panax quinquefolius):</strong></li>
-    <ul>
-        <li><strong>Soil:</strong> Cool, shaded, well-drained soil rich in organic matter, with a pH between 5.0 and 6.0.</li>
-        <li><strong>Water:</strong> Requires consistent moisture but not waterlogged soil. Mulching helps retain soil moisture.</li>
-    </ul>
-</ul>
-
-<h2>Part 6: Medicinal Fungi and Their Benefits</h2>
-
-<h3>Reishi (Ganoderma lucidum)</h3>
-<p>Known for its immune-boosting properties and ability to support overall health and longevity. Reishi is also used to reduce stress and improve sleep quality.</p>
-<ul>
-    <li><strong>Growing Conditions:</strong> Grows on hardwood logs, particularly oak, in a shaded, humid environment.</li>
-    <li><strong>Soil and Water:</strong> Prefers a substrate of hardwood logs; keep the logs moist but not waterlogged.</li>
-</ul>
-
-<h3>Lion’s Mane (Hericium erinaceus)</h3>
-<p>Supports cognitive health, including memory and concentration, and is also known for its potential neuroprotective effects.</p>
-<ul>
-    <li><strong>Growing Conditions:</strong> Grows on hardwood logs or sawdust blocks in a shaded environment.</li>
-    <li><strong>Soil and Water:</strong> Requires a substrate of hardwood or sawdust; keep the substrate moist, especially during the fruiting stage.</li>
-</ul>
-
-<h3>Turkey Tail (Trametes versicolor)</h3>
-<p>Supports immune health and has been researched for its potential role in cancer treatment.</p>
-<ul>
-    <li><strong>Growing Conditions:</strong> Grows on dead or decaying hardwood, often in shaded, moist environments.</li>
-    <li><strong>Soil and Water:</strong> Prefers a hardwood substrate; ensure consistent moisture for optimal growth.</li>
-</ul>
-
-<h3>Chaga (Inonotus obliquus)</h3>
-<p>Known for its antioxidant properties, Chaga is used to boost the immune system, fight inflammation, and support overall health.</p>
-<ul>
-    <li><strong>Growing Conditions:</strong> Grows naturally on birch trees in cold climates. Chaga is typically harvested from wild trees.</li>
-    <li><strong>Soil and Water:</strong> Since Chaga is primarily wild-harvested, it doesn’t require soil or watering. However, maintaining the health of birch forests is crucial for sustainable harvesting.</li>
-</ul>
-
-<h3>Maitake (Grifola frondosa)</h3>
-<p>Supports immune function, helps regulate blood sugar levels, and may aid in weight management. It’s also known for its rich, savory flavor in culinary use.</p>
-<ul>
-    <li><strong>Growing Conditions:</strong> Grows at the base of oak, elm, or maple trees, usually in moist, shaded environments.</li>
-    <li><strong>Soil and Water:</strong> Requires a substrate of hardwood or sawdust; keep the substrate moist, especially during the fruiting stage.</li>
-</ul>
-
-<h2>Part 7: Remedies and Applications</h2>
-
-<h3>Making Tinctures</h3>
-<p>Tinctures are concentrated herbal extracts made by soaking the bark, berries, leaves, or roots from one or more plants in alcohol or vinegar. The alcohol pulls out the active ingredients in the plant parts, concentrating them as a liquid.</p>
-<h4>How to Make a Tincture:</h4>
-<ul>
-    <li><strong>Choose Your Herb:</strong> Select herbs such as Echinacea, Goldenseal, or Yarrow.</li>
-    <li><strong>Prepare the Herb:</strong> Chop or grind the herb and place it in a glass jar.</li>
-    <li><strong>Add Alcohol or Vinegar:</strong> Cover the herb completely with alcohol (vodka is commonly used) or apple cider vinegar.</li>
-    <li><strong>Seal and Store:</strong> Seal the jar tightly and store it in a cool, dark place for 4-6 weeks, shaking it daily.</li>
-    <li><strong>Strain and Bottle:</strong> After 4-6 weeks, strain the liquid through cheesecloth into a clean jar, then transfer it to a dark glass bottle for storage. Label the bottle with the herb name and date.</li>
-</ul>
-
-<h3>Making Herbal Teas</h3>
-<p>Herbal teas, or infusions, are one of the simplest ways to use medicinal herbs. They provide soothing therapeutic effects and are easy to prepare.</p>
-<h4>How to Make an Herbal Tea:</h4>
-<ul>
-    <li><strong>Select Your Herbs:</strong> Common choices include Yarrow, Black Cohosh, and American Ginseng.</li>
-    <li><strong>Prepare the Tea:</strong> Place 1-2 teaspoons of dried herbs or a small handful of fresh herbs into a tea infuser or directly into a cup.</li>
-    <li><strong>Add Boiling Water:</strong> Pour boiling water over the herbs.</li>
-    <li><strong>Steep and Serve:</strong> Cover the cup and let it steep for 5-10 minutes. Strain and enjoy the tea.</li>
-</ul>
-
-<h3>Making Salves</h3>
-<p>Salves are soothing balms made with infused oils, beeswax, and essential oils. They are used to heal and protect the skin.</p>
-<h4>How to Make a Salve:</h4>
-<ul>
-    <li><strong>Infuse the Oil:</strong> Infuse your chosen herbs (e.g., Calendula, Comfrey) in a carrier oil by soaking them in the oil for several weeks or gently heating them.</li>
-    <li><strong>Strain the Oil:</strong> After the infusion period, strain the oil into a clean jar.</li>
-    <li><strong>Melt Beeswax:</strong> Melt beeswax in a double boiler and add it to the infused oil.</li>
-    <li><strong>Mix and Pour:</strong> Stir until well combined and pour the mixture into tins or jars. Allow it to cool and harden before sealing.</li>
-</ul>
-        
-    </main>
 </body>
 </html>
