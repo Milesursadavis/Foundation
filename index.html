@@ -228,19 +228,41 @@
 
         main {
             padding: 20px;
-            text-align: center;
-        }
-
-        h2 {
-            color: #e0e0e0;
-            font-size: 1.5em;
-        }
-
-        p {
-            margin: 20px 0;
             text-align: left;
+        }
+
+        .collapsible-section {
+            background-color: #333;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .collapsible-header {
+            font-size: 1.5em;
+            color: #e0e0e0;
+            padding: 15px;
+            cursor: pointer;
+            background-color: #444;
+            margin: 0;
+        }
+
+        .collapsible-content {
+            padding: 15px;
+            display: none; /* Initially hidden */
+            background-color: #555;
             color: #d0d0d0;
-            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .collapsible-content p {
+            margin: 10px 0;
+        }
+
+        /* Hover effects */
+        .collapsible-header:hover {
+            background-color: #555;
         }
 
         @media (max-width: 768px) {
@@ -263,6 +285,14 @@
             nav a {
                 flex: 1 1 auto;
             }
+
+            .collapsible-header {
+                font-size: 1.2em;
+            }
+
+            .collapsible-content {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -280,8 +310,7 @@
 <header id="header">
     <div class="search-bar">
         <input type="text" placeholder="Search...">
-        <button type="submit"><i class="fas fa-search"></i></
-button>
+        <button type="submit"><i class="fas fa-search"></i></button>
     </div>
     <div class="cube">
         <div class="front"></div>
@@ -331,9 +360,47 @@ button>
     <a href="#recruitment">Recruitment</a>
 </nav>
 
+<!-- Main Content Section -->
 <main>
-    <h2>Welcome to The Community of the Black Cube</h2>
-    <p>Your journey into the realms of philosophy, psychology, and the mysteries of the universe starts here. Explore our guides and dive deep into the teachings that shape our community.</p>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Apollo and Dionysus: The Balance of Forces</h2>
+        <div class="collapsible-content">
+            <p>Friedrich Nietzsche, in <em>The Birth of Tragedy</em>, explores the symbolic struggle between Apollo and Dionysus, two gods representing fundamental and opposing forces in human life. Apollo, the god of reason, clarity, and order, embodies the principle of form and structure. Dionysus, on the other hand, is the god of intoxication, chaos, and overflowing passion, symbolizing the life force that transcends the boundaries of the rational.</p>
+            <p>Nietzsche argues that the true greatness of Greek culture lay in its ability to balance these forces, allowing Apollonian serenity to coexist with Dionysian ecstasy. This balance between order and chaos, reason and passion, is essential not only for artistic creation but also for a fully realized life.</p>
+            <p>In The Foundation, we adopt this Nietzschean dialectic, recognizing that human growth arises from the harmonious integration of these dual forces.</p>
+        </div>
+    </section>
+
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">The Burnout Society and Modern Challenges</h2>
+        <div class="collapsible-content">
+            <p>In <em>The Burnout Society</em>, Byung-Chul Han invites us to reflect on a time when the essential characteristics of humanity seem to have faded. Traditions, festivals, and celebrations that once strengthened community and culture have eroded, giving way to a society where extreme individualism and consumerism dominate the stage.</p>
+            <p>The German philosopher Hermann Hesse, in <em>Steppenwolf</em>, compares the human soul to a garden where flowers and weeds coexist, where the desired and the undesired are part of an integral whole. Similarly, Hesse teaches us to accept our flaws along with our strengths, embracing the totality of who we are.</p>
+            <p>Charles Bukowski, through his Dirty Realism, finds beauty and hope in the darkest aspects of society. He shows us that even in the squalor of everyday life, there is a glow of humanity that deserves to be celebrated.</p>
+            <p>In The Foundation, we seek to teach acceptance of human duality, recognizing both the positive and negative aspects. Hegelian dialectics remind us that all movement on Earth and in the Universe arises from the struggle of opposites, and our goal is for these opposites to coexist in harmony, allowing each individual to reach their full potential.</p>
+        </div>
+    </section>
+
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Personal Reflections from Guido Ríos Díaz</h2>
+        <div class="collapsible-content">
+            <p>I am Guido Ríos Díaz, and I come from Lima, Peru, a country marked by the realities of the third world. I grew up in an environment of modesty and humility, where stoicism was not a choice but a necessity. I learned through forced restraint that you cannot always have what you desire, that sometimes money is not enough, and that the desired company is not always available.</p>
+            <p>Living in the third world means learning to accept discomfort, to adapt to hard beds, fragile chairs, and difficult conditions, and to appreciate the simple blessings of life. Poverty in the third world, far from fragmenting society, unites communities. People help each other, understanding that adversities are temporary and appreciating the simple blessings of health and existence.</p>
+            <p>As stoicism teaches, gratitude is the foundation of our resilience.</p>
+        </div>
+    </section>
+
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">The Philosophy of Saturnism and The Foundation's Purpose</h2>
+        <div class="collapsible-content">
+            <p>Faced with the problem of the burnout society, Saturnism proposes the practice of restraint and self-discipline. Governing oneself is the key to controlling thoughts, emotions, and fears.</p>
+            <p>During the golden age of the Roman Empire, the god Saturn reigned, symbolizing a philosophy and worldview profoundly different from that of neoliberal society in 2024. Saturn, known in ancient Greece as Kronos, was the god of time and agriculture. Represented with a sickle, Saturn embodies something more transcendent than simple agriculture; it is a metaphor for life itself.</p>
+            <p>Agriculture reflects the hard work that begins in youth, the strength and temperance needed to withstand adverse weather, and the wisdom to harvest at the right time. Saturn, often misunderstood as the great punisher, does not punish but teaches. In his philosophy, there is no guilt, shame, or eternal condemnation; these are pernicious ideas inherited from Christianity.</p>
+            <p>The philosophy of Saturnism, on the other hand, promotes justice, integrity, and temperance, aligning with the four virtues of stoicism: Wisdom, Courage, Justice, and Temperance.</p>
+            <p>The Foundation is a community built on these four Stoic virtues, emphasizing self-restraint, governance, discipline, and pure love and kindness. Our ultimate goal is to create an environment where true kindness and love are practiced daily.</p>
+            <p>We aim to cultivate a space where every individual feels valued and can grow both personally and spiritually, contributing to the collective well-being of the community.</p>
+        </div>
+    </section>
 </main>
 
 <script>
@@ -363,6 +430,20 @@ button>
 
     // Create multiple stars at random intervals
     setInterval(createStar, 100); // Adjust this value for more or fewer stars
+
+    // Collapsible Sections Functionality
+    const headers = document.querySelectorAll('.collapsible-header');
+
+    headers.forEach(header => {
+        header.addEventListener('click', function () {
+            const content = this.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+
+            if (content.style.display === 'block') {
+                content.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 </script>
 
 </body>
