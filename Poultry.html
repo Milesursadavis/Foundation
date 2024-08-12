@@ -13,14 +13,84 @@
             padding: 0;
             line-height: 1.6;
         }
+
         header {
             background-color: #1a1a1a;
             color: #ffffff;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 2em;
-            letter-spacing: 0.1em;
+            position: relative;
+            font-family: 'Merriweather', serif;
+            overflow: hidden;
+            height: 400px; /* Adjusted height for better layout */
         }
+
+        .cube {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto; /* Center the cube horizontally */
+            transform-style: preserve-3d;
+            animation: spin 20s infinite linear;
+            position: relative;
+            top: 80px;
+        }
+
+        .cube div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border: 1px solid #333;
+        }
+
+        .cube .front  { transform: translateZ(30px); }
+        .cube .back   { transform: rotateY(180deg) translateZ(30px); }
+        .cube .right  { transform: rotateY(90deg) translateZ(30px); }
+        .cube .left   { transform: rotateY(-90deg) translateZ(30px); }
+        .cube .top    { transform: rotateX(90deg) translateZ(30px); }
+        .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+        @keyframes spin {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to   { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .chicken {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 80px;
+            animation: walk 8s infinite linear;
+        }
+
+        .egg {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background-color: #ffffcc;
+            border-radius: 50%;
+            animation: drop 2s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes walk {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+
+        @keyframes drop {
+            0% { opacity: 0; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(80px); }
+            100% { opacity: 0; transform: translateY(100px); }
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 120px 0 10px;
+            color: #ffffff;
+            transition: transform 0.2s ease-in-out;
+        }
+
         nav {
             display: flex;
             justify-content: space-around;
@@ -28,6 +98,7 @@
             background-color: #333333;
             padding: 15px 0;
         }
+
         nav a {
             color: #e0e0e0;
             padding: 15px 25px;
@@ -42,44 +113,83 @@
             min-width: 120px;
             font-family: 'Georgia', serif;
         }
+
         nav a:hover {
             background-color: #555555;
         }
+
         main {
             padding: 30px;
             text-align: left;
             font-family: 'Georgia', serif;
         }
-        h1 {
-            font-size: 2em;
-            margin: 0;
-            padding: 20px 0;
-            text-align: center;
-        }
-        h2 {
-            color: #e0e0e0;
-            font-size: 1.75em;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #e0e0e0;
-            font-size: 1.5em;
-            margin-top: 20px;
-        }
-        p {
-            margin: 20px 0;
+
+        .introduction {
+            background-color: #333;
             color: #d0d0d0;
-            font-size: 1.1em;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
-        ul {
-            margin: 20px 0;
-            padding-left: 20px;
+
+        .introduction p {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            text-align: justify;
         }
-        li {
+
+        .collapsible-section {
+            background-color: #333;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .collapsible-header {
+            font-size: 1.5em;
+            color: #e0e0e0;
+            padding: 15px;
+            cursor: pointer;
+            background-color: #444;
+            margin: 0;
+        }
+
+        .collapsible-content {
+            padding: 15px;
+            display: none; /* Initially hidden */
+            background-color: #555;
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        .collapsible-content p {
             margin: 10px 0;
         }
 
-        /* Responsive Design */
+        /* Text preview styles */
+        .collapsible-content .preview {
+            display: inline;
+        }
+
+        .collapsible-content.expanded .preview {
+            display: none; /* Hide the preview once expanded */
+        }
+
+        .collapsible-content.expanded .full-content {
+            display: block;
+        }
+
+        .collapsible-content .full-content {
+            display: none;
+        }
+
+        /* Hover effects */
+        .collapsible-header:hover {
+            background-color: #555;
+        }
+
         @media (max-width: 768px) {
             header {
                 font-size: 1.5em;
@@ -94,18 +204,27 @@
             h1 {
                 font-size: 1.75em;
             }
-            h2 {
-                font-size: 1.5em;
+            .collapsible-header {
+                font-size: 1.2em;
             }
-            h3 {
-                font-size: 1.25em;
+            .collapsible-content {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Poultry</h1>
+        <div class="cube">
+            <div class="front"></div>
+            <div class="back"></div>
+            <div class="right"></div>
+            <div class="left"></div>
+            <div class="top"></div>
+            <div class="bottom"></div>
+        </div>
+        <h1>Comprehensive Guide to Poultry</h1>
+        <img src="chicken.png" alt="Chicken" class="chicken">
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -117,204 +236,111 @@
         <a href="#recruitment">Recruitment</a>
     </nav>
     <main>
-        <h2>Part 1: Introduction to Poultry Keeping and Building a Chicken Coop</h2>
-        <h3>Introduction to Poultry Keeping</h3>
-        <p>This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop, managing hen behavior, feeding, and overall care. These two breeds are known for their unique characteristics—Jersey Giants for their large size and Ayam Cemani for their striking appearance.</p>
+        <!-- Introduction Section -->
+        <section class="introduction">
+            <p>This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop, managing hen behavior, feeding, and overall care. These two breeds are known for their unique characteristics—Jersey Giants for their large size and Ayam Cemani for their striking appearance.</p>
+        </section>
 
-        <h3>Building a Chicken Coop</h3>
-        <h4>Materials and Tools:</h4>
-        <ul>
-            <li>Lumber: 2x4s for framing, plywood for walls, and treated wood for the base.</li>
-            <li>Hardware cloth: 1/2 inch mesh for predator-proofing the coop.</li>
-            <li>Screws and nails: Galvanized to prevent rust.</li>
-            <li>Hinges and latches: For doors and windows.</li>
-            <li>Roofing material: Metal sheets or shingles.</li>
-            <li>Paint or wood sealant: To protect the wood from the elements.</li>
-        </ul>
+        <!-- Collapsible Sections -->
+        <section class="collapsible-section">
+            <h2 class="collapsible-header">Building a Chicken Coop</h2>
+            <div class="collapsible-content">
+                <p class="preview">Learn about the materials, tools, and size considerations for building a sturdy and safe chicken coop...</p>
+                <p class="full-content">
+                    <strong>Materials and Tools:</strong>
+                    <ul>
+                        <li>Lumber: 2x4s for framing, plywood for walls, and treated wood for the base.</li>
+                        <li>Hardware cloth: 1/2 inch mesh for predator-proofing the coop.</li>
+                        <li>Screws and nails: Galvanized to prevent rust.</li>
+                        <li>Hinges and latches: For doors and windows.</li>
+                        <li>Roofing material: Metal sheets or shingles.</li>
+                        <li>Paint or wood sealant: To protect the wood from the elements.</li>
+                    </ul>
+                    <strong>Coop Size and Measurements:</strong>
+                    <p>The size of your chicken coop depends on the number of hens you plan to keep. A general rule of thumb is to allow at least 4 square feet of floor space per hen inside the coop, and 8-10 square feet per hen in an outdoor run.</p>
+                </p>
+            </div>
+        </section>
 
-        <h4>Coop Size and Measurements:</h4>
-        <p>The size of your chicken coop depends on the number of hens you plan to keep...</p>
+        <section class="collapsible-section">
+            <h2 class="collapsible-header">Hen Behavior and Management</h2>
+            <div class="collapsible-content">
+                <p class="preview">Understanding the pecking order and egg-laying behavior is crucial for managing a healthy flock...</p>
+                <p class="full-content">
+                    <strong>Understanding Hen Pecking Order:</strong>
+                    <p>The pecking order is a natural hierarchy established within a flock of hens. This social structure determines access to resources such as food, water, and roosting spots.</p>
+                    <strong>Egg-Laying Behavior:</strong>
+                    <p>Hens typically begin laying eggs around 18-24 weeks of age, although this can vary by breed.</p>
+                </p>
+            </div>
+        </section>
 
-        <h2>Part 1: Introduction to Poultry Keeping and Building a Chicken Coop</h2>
+        <section class="collapsible-section">
+            <h2 class="collapsible-header">Nutrition, Feeding, and Processing</h2>
+            <div class="collapsible-content">
+                <p class="preview">Proper nutrition and feeding schedules are essential for maintaining healthy poultry...</p>
+                <p class="full-content">
+                    <strong>Feed Requirements:</strong>
+                    <p>Jersey Giants and Ayam Cemani have distinct nutritional needs. Chicks require a starter feed with 18-20% protein, while mature hens need a layer feed with 16% protein.</p>
+                </p>
+            </div>
+        </section>
 
-<h3>Introduction to Poultry Keeping</h3>
-<p>This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop, managing hen behavior, feeding, and overall care. These two breeds are known for their unique characteristics—Jersey Giants for their large size and Ayam Cemani for their striking appearance.</p>
-
-<h3>Building a Chicken Coop</h3>
-
-<h4>Materials and Tools:</h4>
-<ul>
-    <li>Lumber: 2x4s for framing, plywood for walls, and treated wood for the base.</li>
-    <li>Hardware cloth: 1/2 inch mesh for predator-proofing the coop.</li>
-    <li>Screws and nails: Galvanized to prevent rust.</li>
-    <li>Hinges and latches: For doors and windows.</li>
-    <li>Roofing material: Metal sheets or shingles.</li>
-    <li>Paint or wood sealant: To protect the wood from the elements.</li>
-</ul>
-
-<h4>Coop Size and Measurements:</h4>
-<p>The size of your chicken coop depends on the number of hens you plan to keep. A general rule of thumb is to allow at least 4 square feet of floor space per hen inside the coop, and 8-10 square feet per hen in an outdoor run. Below are the recommended coop sizes for different flock sizes:</p>
-<ul>
-    <li>Small Flock (3-4 hens): Coop size should be approximately 4x6 feet, with a run size of 4x8 feet.</li>
-    <li>Medium Flock (6-8 hens): Coop size should be approximately 6x8 feet, with a run size of 8x10 feet.</li>
-    <li>Large Flock (10-12 hens): Coop size should be approximately 8x12 feet, with a run size of 10x12 feet.</li>
-</ul>
-<p>Ensure the coop has a minimum height of 3 feet to allow for easy cleaning and to provide adequate ventilation. The outdoor run should be enclosed with hardware cloth to protect the hens from predators.</p>
-
-<h4>Providing Access to Clean Water and Food:</h4>
-<p>Clean water and food are crucial for the health and productivity of your hens. The coop should include a designated area for waterers and feeders that is easy to access and maintain. Consider the following tips for providing clean water and food:</p>
-<ul>
-    <li><strong>Waterers:</strong> Use hanging or nipple waterers to keep water clean and prevent spills. Ensure that waterers are elevated off the ground and are regularly cleaned and refilled.</li>
-    <li><strong>Feeders:</strong> Use gravity feeders or hanging feeders that can be adjusted to the hens' height. Place feeders in a sheltered area to keep feed dry and prevent contamination.</li>
-    <li><strong>Placement:</strong> Position waterers and feeders in different areas to encourage movement and prevent overcrowding. Ensure they are placed away from nesting boxes and roosting areas to minimize contamination.</li>
-</ul>
-
-<h4>The Importance of Roosting Places:</h4>
-<p>Roosting places are essential for hens to sleep comfortably and safely. Hens prefer to roost off the ground, and providing adequate roosting space helps to prevent stress and aggression. Consider the following when setting up roosting places in your coop:</p>
-<ul>
-    <li><strong>Roost Bars:</strong> Install roost bars that are at least 2 inches wide, with rounded edges for comfort. Roost bars should be placed at least 2 feet off the ground and 12-18 inches apart.</li>
-    <li><strong>Ladder Roosts:</strong> If space is limited, consider a ladder-style roost, where bars are staggered at different heights. This setup allows multiple hens to roost comfortably while maximizing space.</li>
-    <li><strong>Space per Hen:</strong> Provide at least 8-12 inches of roosting space per hen to prevent overcrowding and ensure each hen has a comfortable place to sleep.</li>
-</ul>
-
-<h2>Part 2: Hen Behavior and Management</h2>
-
-<h3>Understanding Hen Pecking Order</h3>
-<p>The pecking order is a natural hierarchy established within a flock of hens. This social structure determines access to resources such as food, water, and roosting spots. Understanding the pecking order is crucial for managing your flock and ensuring the well-being of all your hens.</p>
-
-<p>The pecking order is typically established through displays of dominance, where the most dominant hens assert their authority over others. The most dominant hen, often referred to as the 'alpha,' has first access to food and preferred roosting spots, followed by the next in the hierarchy, and so on. While some pecking and squabbling are normal, excessive aggression can indicate issues that need to be addressed.</p>
-
-<h4>To manage the pecking order effectively:</h4>
-<ul>
-    <li><strong>Observe the flock:</strong> Regularly watch your hens to identify any signs of bullying or excessive aggression.</li>
-    <li><strong>Provide ample resources:</strong> Ensure there are enough feeders, waterers, and roosting spaces to minimize competition.</li>
-    <li><strong>Separate aggressive hens:</strong> If a hen becomes overly aggressive, consider isolating her temporarily to reduce tension.</li>
-    <li><strong>Introduce new hens carefully:</strong> When adding new hens to the flock, do so gradually and with supervision to prevent disruptions to the established pecking order.</li>
-</ul>
-
-<h3>Egg-Laying Behavior and Nesting Boxes</h3>
-<p>Hens typically begin laying eggs around 18-24 weeks of age, although this can vary by breed. Providing a comfortable and secure environment for egg laying is essential to encourage regular and healthy egg production.</p>
-
-<h4>Nesting Boxes:</h4>
-<p>Nesting boxes should be provided in the coop to give hens a private and safe place to lay their eggs. Here are some guidelines for setting up nesting boxes:</p>
-<ul>
-    <li><strong>Size:</strong> Each nesting box should be approximately 12x12 inches to comfortably accommodate a hen.</li>
-    <li><strong>Quantity:</strong> Provide one nesting box for every 3-4 hens to prevent overcrowding.</li>
-    <li><strong>Location:</strong> Place nesting boxes in a quiet, dark corner of the coop, elevated off the ground but easily accessible.</li>
-    <li><strong>Bedding:</strong> Line nesting boxes with clean, dry bedding such as straw or wood shavings to keep eggs clean and prevent breakage.</li>
-</ul>
-
-<h4>Egg Production:</h4>
-<p>Egg production varies by breed, but on average, a hen will lay between 250-300 eggs per year. Jersey Giants and Ayam Cemani are popular breeds for egg production, though their yields differ:</p>
-<ul>
-    <li><strong>Jersey Giants:</strong> Typically lay around 150-200 eggs per year. They are large birds that require more space and food but are known for their gentle temperament.</li>
-    <li><strong>Ayam Cemani:</strong> Lay approximately 80-120 eggs per year. These birds are valued for their unique appearance and are often kept as ornamental chickens.</li>
-</ul>
-
-<h2>Part 3: Nutrition, Feeding, and Timelines for Growing and Processing</h2>
-
-<h3>Nutrition and Feeding</h3>
-
-<h4>Feed Requirements for Jersey Giants and Ayam Cemani:</h4>
-<p>Proper nutrition is vital for maintaining the health and productivity of your hens. A balanced diet ensures that hens have the energy and nutrients they need for egg production, growth, and overall well-being. Jersey Giants and Ayam Cemani have distinct nutritional needs, which are outlined below:</p>
-<ul>
-    <li><strong>Chicks (0-4 weeks):</strong> Chicks require a starter feed with 18-20% protein. Each chick will consume approximately 20-25 grams of feed per day. For a flock of 10 chicks, this equals 200-250 grams per day.</li>
-    <li><strong>Pullets (5-12 weeks):</strong> Pullets should be fed a grower feed with 16-18% protein. Each pullet will consume around 50-75 grams of feed per day. For a flock of 10 pullets, this equals 500-750 grams per day.</li>
-    <li><strong>Young Hens/Cockerels (13-20 weeks):</strong> Transition to a layer or finisher feed with 16-18% protein. Each bird will consume approximately 100-120 grams of feed per day. For a flock of 10 birds, this equals 1,000-1,200 grams per day.</li>
-    <li><strong>Mature Hens/Roosters (21+ weeks):</strong> Mature birds require a layer feed with 16% protein. Each hen or rooster will consume around 120-150 grams of feed per day. For a flock of 10 mature birds, this equals 1,200-1,500 grams per day.</li>
-</ul>
-
-<h4>Feeding Frequency:</h4>
-<p>Jersey Giants and Ayam Cemani should be fed consistently to ensure they receive the necessary nutrients for growth, egg production, and overall health.</p>
-<ul>
-    <li><strong>Jersey Giants:</strong> Jersey Giants, being a larger breed, require more frequent feeding. It's recommended to feed them twice a day—once in the morning and once in the late afternoon. Provide enough feed for them to consume within 15-20 minutes, ensuring that all birds have access to the food. If you notice that food is consistently being left over, adjust the portions accordingly.</li>
-    <li><strong>Ayam Cemani:</strong> Ayam Cemani, being a smaller and more active breed, also benefit from being fed twice a day. They should be fed in the morning and late afternoon, with portions adjusted based on their consumption. Make sure that feed is not left out for too long to prevent spoilage or attracting pests.</li>
-</ul>
-
-<h4>Homemade Feed Formula Using Ingredients from The Foundation:</h4>
-<p>Creating a homemade feed formula using ingredients produced within The Foundation can be both cost-effective and sustainable. Below is a basic feed formula that can be adjusted based on the specific needs of your flock:</p>
-
-<h5>Basic Feed Formula:</h5>
-<ul>
-    <li><strong>Corn (40%):</strong> Provides energy and carbohydrates. Corn can be grown and harvested within The Foundation.</li>
-    <li><strong>Soybeans or Peas (20%):</strong> High in protein, essential for muscle development and egg production. Both soybeans and peas can be grown in rotation with other crops.</li>
-    <li><strong>Wheat or Barley (20%):</strong> Adds fiber and additional protein. These grains are versatile and can be cultivated alongside other crops.</li>
-    <li><strong>Oyster Shells or Limestone (5%):</strong> Provides calcium for strong eggshells. Oyster shells can be sourced naturally or limestone can be mined.</li>
-    <li><strong>Fish Meal or Insect Protein (10%):</strong> High-quality protein source. Fish meal can be produced from The Foundation's aquaculture operations, or insect protein can be harvested from mealworms or black soldier flies.</li>
-    <li><strong>Grit (5%):</strong> Necessary for digestion. Grit can be sourced from natural stone deposits or produced by crushing larger stones.</li>
-</ul>
-
-<h3>Timelines for Growing and Processing</h3>
-
-<h4>Growing and Processing Times:</h4>
-<p>The time it takes for chickens to reach maturity and the best time to process them depends on the breed and the purpose (egg-laying or meat production). Below are general guidelines for common breeds:</p>
-<ul>
-    <li><strong>Broilers (Meat Chickens):</strong> Broilers are typically ready for processing at around 6-8 weeks of age. They grow quickly and reach a processing weight of 5-7 pounds. The ideal time to process broilers is in the early morning or late evening when temperatures are cooler, which helps reduce stress on the birds.</li>
-    <li><strong>Dual-Purpose Breeds (e.g., Rhode Island Red, Plymouth Rock):</strong> These breeds can be used for both meat and eggs. They generally take longer to mature, reaching processing weight at around 16-20 weeks. For meat production, it's best to process them at around 18-20 weeks for optimal size and tenderness.</li>
-    <li><strong>Layers (Egg-Laying Hens):</strong> Layers are typically not processed for meat until they have passed their peak egg production, usually after 18-24 months. At this point, the meat may be tougher and better suited for stewing rather than roasting.</li>
-</ul>
-
-<h4>Egg-Laying Times:</h4>
-<p>Egg production is influenced by various factors, including breed, age, and environmental conditions. Here's what to expect regarding egg-laying timelines:</p>
-<ul>
-    <li><strong>Age:</strong> Hens typically begin laying eggs at around 18-24 weeks of age, depending on the breed. For instance, Leghorns may start laying as early as 16 weeks, while larger breeds like Jersey Giants may not start until 24 weeks.</li>
-    <li><strong>Time of Year:</strong> Hens are most productive in the spring and summer when daylight hours are longer. Egg production often decreases in the fall and winter due to shorter daylight hours. Providing supplemental light in the coop can help maintain egg production during these months.</li>
-    <li><strong>Time of Day:</strong> Hens typically lay eggs in the morning, with the majority of eggs being laid within 5-7 hours after sunrise. It's common for hens to lay eggs later in the day as they get older or during periods of stress.</li>
-</ul>
-
-<h4>Best Time to Raise Chicks:</h4>
-<p>Raising chicks requires careful planning to ensure they grow into healthy and productive adults. The best time to raise chicks is in the spring, but there are specific considerations to keep in mind:</p>
-<ul>
-    <li><strong>Spring:</strong> This is the ideal time to raise chicks, as the warmer temperatures and longer daylight hours promote healthy growth. Chicks raised in the spring will reach maturity by late summer or early fall, aligning with peak egg-laying season.</li>
-    <li><strong>Summer:</strong> Raising chicks in the summer is also possible, but be mindful of extreme heat, which can stress young birds. Ensure they have access to shade and plenty of water.</li>
-    <li><strong>Fall and Winter:</strong> Raising chicks in the fall or winter is more challenging due to colder temperatures and shorter days. Supplemental heat and lighting will be necessary to keep chicks warm and encourage growth.</li>
-</ul>
-
-<h2>Part 4: Sunlight, Free-Range Time, and Coop Sanitation</h2>
-
-<h3>Sunlight Times</h3>
-<p>Sunlight is essential for the health and productivity of chickens, particularly for egg-laying breeds like Jersey Giants and Ayam Cemani. Sunlight exposure helps regulate the hens' internal clocks, promoting egg production and overall well-being.</p>
-
-<h4>Ideal Sunlight Exposure:</h4>
-<ul>
-    <li>Chickens should have access to at least 12-14 hours of sunlight each day to maintain optimal egg production. During shorter days in the fall and winter, supplemental lighting in the coop can help ensure hens receive adequate light.</li>
-    <li>Morning Light: Morning sunlight is especially important for egg-laying hens. Ensure that coops and free-range areas are positioned to receive early morning light, which helps stimulate egg-laying cycles.</li>
-    <li>Shade: While sunlight is crucial, chickens also need access to shade during hot weather to prevent heat stress. Ensure that free-range areas and coops provide shaded spots where hens can cool down.</li>
-</ul>
-
-<h3>Free-Range Time</h3>
-<p>Allowing chickens to free-range offers numerous benefits, including improved health, mental stimulation, and access to natural food sources. However, it’s important to balance free-range time with safety considerations.</p>
-
-<h4>Daily Free-Range Time:</h4>
-<ul>
-    <li>Chickens should be allowed to free-range for at least 4-6 hours each day. This time can be extended during the warmer months when daylight is longer, and natural foraging is more abundant.</li>
-    <li>Supervised Free-Range: To protect hens from predators, it’s best to supervise free-range time or provide a secure, fenced-in area where they can forage safely.</li>
-    <li>Evening Routines: As evening approaches, chickens will naturally return to their coop to roost. Ensure that the coop is clean and secure, with fresh bedding and feed available for the night.</li>
-</ul>
-
-<h3>Coop Sanitation Instructions</h3>
-
-<h4>Daily Maintenance</h4>
-<ul>
-    <li>Remove Droppings: Each morning, remove any droppings from the coop floor, nesting boxes, and roosting bars. This helps reduce ammonia buildup and keeps the coop fresh.</li>
-    <li>Check Waterers and Feeders: Clean and refill waterers and feeders daily to ensure hens have access to clean water and fresh feed.</li>
-    <li>Inspect the Coop: Perform a quick inspection of the coop each day, checking for signs of damage, pests, or other issues that need attention.</li>
-</ul>
-
-<h4>Weekly Cleaning</h4>
-<ul>
-    <li>Change Bedding: Replace bedding in nesting boxes and on the coop floor at least once a week. Use clean, dry straw, wood shavings, or other suitable materials.</li>
-    <li>Disinfect Waterers and Feeders: Thoroughly clean and disinfect waterers and feeders with a mild bleach solution (1 part bleach to 10 parts water). Rinse well and allow them to air dry before refilling.</li>
-    <li>Clean Roost Bars and Nesting Boxes: Wipe down roost bars and nesting boxes with a disinfectant to remove dirt and bacteria.</li>
-</ul>
-
-<h4>Monthly Deep Cleaning</h4>
-<ul>
-    <li>Empty the Coop: Once a month, remove all bedding, feeders, waterers, and other items from the coop. Sweep out the coop and remove any cobwebs or debris.</li>
-    <li>Disinfect the Coop: Use a poultry-safe disinfectant to thoroughly clean the walls, floors, and roosting areas. Pay special attention to corners and crevices where pests and bacteria may hide.</li>
-    <li>Replace Bedding: After the coop has been cleaned and disinfected, replace it with fresh bedding. Allow the coop to air out for a few hours before reintroducing the hens.</li>
-</ul>
-
+        <section class="collapsible-section">
+            <h2 class="collapsible-header">Sunlight, Free-Range Time, and Coop Sanitation</h2>
+            <div class="collapsible-content">
+                <p class="preview">Sunlight exposure, free-range time, and regular coop sanitation are key to healthy poultry...</p>
+                <p class="full-content">
+                    <strong>Sunlight Exposure:</strong>
+                    <p>Chickens should have access to at least 12-14 hours of sunlight each day to maintain optimal egg production.</p>
+                    <strong>Free-Range Time:</strong>
+                    <p>Allowing chickens to free-range offers numerous benefits, including improved health, mental stimulation, and access to natural food sources.</p>
+                    <strong>Coop Sanitation:</strong>
+                    <p>Regular coop cleaning is essential to prevent the buildup of harmful bacteria and pests.</p>
+                </p>
+            </div>
+        </section>
     </main>
+
+    <script>
+        // Function to create random eggs in the header
+        function createEgg() {
+            const header = document.getElementById('header');
+            const egg = document.createElement('div');
+            egg.className = 'egg';
+            egg.style.left = `${Math.random() * 100}%`;
+            egg.style.bottom = `${Math.random() * 100}px`;
+            header.appendChild(egg);
+
+            // Remove the egg after animation ends
+            setTimeout(() => {
+                egg.remove();
+            }, 2000);
+        }
+
+        // Create multiple eggs at random intervals
+        setInterval(createEgg, 1000);
+
+        // Collapsible Sections Functionality
+        const headers = document.querySelectorAll('.collapsible-header');
+
+        headers.forEach(header => {
+            header.addEventListener('click', function () {
+                const content = this.nextElementSibling;
+                const fullContent = content.querySelector('.full-content');
+                const isExpanded = content.classList.toggle('expanded');
+
+                // Smoothly show or hide the full content
+                if (isExpanded) {
+                    fullContent.style.display = 'block';
+                    content.style.display = 'block';
+                    content.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    fullContent.style.display = 'none';
+                    content.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
