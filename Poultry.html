@@ -26,91 +26,30 @@
             overflow: hidden;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            background-color: #333333;
-            padding: 15px 0;
-        }
-
-        nav a {
-            color: #e0e0e0;
-            padding: 15px 25px;
-            text-decoration: none;
-            text-transform: uppercase;
-            margin: 5px;
-            border-radius: 5px;
-            background-color: #444444;
-            transition: background-color 0.3s ease;
-            flex: 1 1 auto;
-            text-align: center;
-            min-width: 120px;
-            font-family: 'Georgia', serif;
-        }
-
-        nav a:hover {
-            background-color: #555555;
-        }
-
-        main {
-            padding: 30px;
-            text-align: left;
-            font-family: 'Georgia', serif;
-        }
-
-        h1 {
-            font-size: 2em;
-            margin: 0;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        .chicken {
-            position: absolute;
-            bottom: 0;
-            left: -100px;
-            width: 100px;
-            height: auto;
-            background-image: url('https://freepngimg.com/thumb/chicken/1-chicken-png-images.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: walk 10s linear infinite;
-        }
-
-        @keyframes walk {
-            0% {
-                left: -100px;
-            }
-            100% {
-                left: 100%;
-            }
-        }
-
         .egg {
             position: absolute;
-            width: 20px;
-            height: 30px;
+            width: 30px;
+            height: 40px;
             background-image: url('https://freepngimg.com/thumb/egg/6-egg-png-image.png');
             background-size: contain;
             background-repeat: no-repeat;
-            bottom: 0;
-            animation: drop 3s ease-in-out infinite;
+            top: -50px;
+            animation: drop 5s linear infinite;
         }
 
         @keyframes drop {
             0% {
                 opacity: 0;
-                bottom: 100%;
+                top: -50px;
             }
             10%,
             90% {
                 opacity: 1;
-                bottom: 50%;
+                top: calc(100% - 40px);
             }
             100% {
                 opacity: 0;
-                bottom: 0;
+                top: calc(100% + 50px);
             }
         }
 
@@ -163,6 +102,39 @@
             to {
                 transform: rotateX(360deg) rotateY(360deg);
             }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background-color: #333333;
+            padding: 15px 0;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            padding: 15px 25px;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin: 5px;
+            border-radius: 5px;
+            background-color: #444444;
+            transition: background-color 0.3s ease;
+            flex: 1 1 auto;
+            text-align: center;
+            min-width: 120px;
+            font-family: 'Georgia', serif;
+        }
+
+        nav a:hover {
+            background-color: #555555;
+        }
+
+        main {
+            padding: 30px;
+            text-align: left;
+            font-family: 'Georgia', serif;
         }
 
         .collapsible-section {
@@ -242,130 +214,111 @@
         }
     </style>
 </head>
-
 <body>
-    <header id="header">
-        <div class="cube">
-            <div class="front"></div>
-            <div class="back"></div>
-            <div class="right"></div>
-            <div the="left"></div>
-            <div class="top"></div>
-            <div class="bottom"></div>
+
+<header id="header">
+    <h1>Comprehensive Guide to Poultry</h1>
+    <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+    <!-- Egg Rain Animation -->
+    <div class="egg"></div>
+    <div class="egg" style="animation-delay: 1s;"></div>
+    <div class="egg" style="animation-delay: 2s;"></div>
+    <div class="egg" style="animation-delay: 3s;"></div>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="poultry.html">Poultry</a>
+    <a href="#guides">Essential Guides and Planning</a>
+    <a href="#magic">Magic of the Black Cube</a>
+    <a href="#philosophy">Philosophy of the Black Cube</a>
+    <a href="#psychology">Psychology of the Black Cube</a>
+    <a href="#recruitment">Recruitment</a>
+</nav>
+
+<main>
+    <!-- Part 1: Introduction (Visible by Default) -->
+    <section>
+        <h2>Part 1: Introduction to Poultry Keeping and Building a Chicken Coop</h2>
+        <p>
+            This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop, managing hen behavior, feeding, and overall care. These two breeds are known for their unique characteristics—Jersey Giants for their large size and Ayam Cemani for their striking appearance.
+        </p>
+        <h3>Building a Chicken Coop</h3>
+        <p>
+            <strong>Materials and Tools:</strong><br>To build a basic chicken coop, you will need the following materials: Lumber, hardware cloth, screws and nails, hinges and latches, roofing material, and paint or wood sealant. Tools required include a tape measure, saw, drill, hammer, screwdriver, and more.
+        </p>
+        <p>
+            <strong>Coop Size and Measurements:</strong><br>The size of your chicken coop depends on the number of hens you plan to keep. A general rule of thumb is to allow at least 4 square feet of floor space per hen inside the coop, and 8-10 square feet per hen in an outdoor run. Recommended coop sizes vary based on flock size.
+        </p>
+    </section>
+
+    <!-- Part 2 -->
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Part 2: Hen Behavior and Management</h2>
+        <div class="collapsible-content">
+            <p class="preview">Understanding hen behavior is essential for managing a healthy flock...</p>
+            <p class="full-content">
+                <strong>Understanding Hen Pecking Order:</strong><br>The pecking order is a natural hierarchy established within a flock of hens. This social structure determines access to resources such as food, water, and roosting spots.
+                <br><strong>Egg-Laying Behavior and Nesting Boxes:</strong><br>Hens typically begin laying eggs around 18-24 weeks of age. Providing a comfortable and secure environment for egg laying is essential to encourage regular and healthy egg production.
+            </p>
         </div>
-        <h1>Comprehensive Guide to Poultry</h1>
-        <div class="chicken"></div>
-    </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="poultry.html">Poultry</a>
-        <a href="#guides">Essential Guides and Planning</a>
-        <a href="#magic">Magic of the Black Cube</a>
-        <a href="#philosophy">Philosophy of the Black Cube</a>
-        <a href="#psychology">Psychology of the Black Cube</a>
-        <a href="#recruitment">Recruitment</a>
-    </nav>
-    <main>
-        <!-- Part 1 -->
-        <section class="collapsible-section">
-            <h2 class="collapsible-header">Part 1: Introduction to Poultry Keeping and Building a Chicken Coop</h2>
-            <div class="collapsible-content">
-                <p class="preview">This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop and care...</p>
-                <p class="full-content">
-                    <strong>Introduction to Poultry Keeping:</strong><br>This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop, managing hen behavior, feeding, and overall care. These two breeds are known for their unique characteristics—Jersey Giants for their large size and Ayam Cemani for their striking appearance.
-                    <br><strong>Building a Chicken Coop:</strong>
-                    <br><strong>Materials and Tools:</strong> To build a basic chicken coop, you will need the following materials:
-                    <ul>
-                        <li>Lumber: 2x4s for framing, plywood for walls, and treated wood for the base.</li>
-                        <li>Hardware cloth: 1/2 inch mesh for predator-proofing the coop.</li>
-                        <li>Screws and nails: Galvanized to prevent rust.</li>
-                        <li>Hinges and latches: For doors and windows.</li>
-                        <li>Roofing material: Metal sheets or shingles.</li>
-                        <li>Paint or wood sealant: To protect the wood from the elements.</li>
-                    </ul>
-                    <strong>Coop Size and Measurements:</strong>
-                    <ul>
-                        <li>Small Flock (3-4 hens): Coop size should be approximately 4x6 feet, with a run size of 4x8 feet.</li>
-                        <li>Medium Flock (6-8 hens): Coop size should be approximately 6x8 feet, with a run size of 8x10 feet.</li>
-                        <li>Large Flock (10-12 hens): Coop size should be approximately 8x12 feet, with a run size of 10x12 feet.</li>
-                    </ul>
-                    <br><strong>Providing Access to Clean Water and Food:</strong><br>Clean water and food are crucial for the health and productivity of your hens...
-                </p>
-            </div>
-        </section>
-        <!-- Part 2 -->
-        <section class="collapsible-section">
-            <h2 class="collapsible-header">Part 2: Hen Behavior and Management</h2>
-            <div class="collapsible-content">
-                <p class="preview">Understanding hen behavior is essential for managing a healthy flock...</p>
-                <p class="full-content">
-                    <strong>Understanding Hen Pecking Order:</strong>
-                    <p>The pecking order is a natural hierarchy established within a flock of hens...</p>
-                    <strong>Egg-Laying Behavior and Nesting Boxes:</strong>
-                    <p>Hens typically begin laying eggs around 18-24 weeks of age...</p>
-                </p>
-            </div>
-        </section>
-        <!-- Part 3 -->
-        <section class="collapsible-section">
-            <h2 class="collapsible-header">Part 3: Nutrition, Feeding, and Processing Timelines</h2>
-            <div class="collapsible-content">
-                <p class="preview">Proper nutrition and feeding are key to healthy hens, with specific guidelines for different stages of growth...</p>
-                <p class="full-content">
-                    <strong>Feed Requirements:</strong>
-                    <p>Jersey Giants and Ayam Cemani have distinct nutritional needs...</p>
-                    <strong>Processing Timelines:</strong>
-                    <p>The time it takes for chickens to reach maturity depends on the breed and purpose...</p>
-                </p>
-            </div>
-        </section>
-        <!-- Part 4 -->
-        <section class="collapsible-section">
-            <h2 class="collapsible-header">Part 4: Sunlight, Free-Range Time, and Coop Sanitation</h2>
-            <div class="collapsible-content">
-                <p class="preview">Sunlight and free-range time are critical for healthy, productive hens. Coop sanitation ensures a safe environment...</p>
-                <p class="full-content">
-                    <strong>Sunlight Times:</strong><br>Sunlight is essential for the health and productivity of chickens, particularly for egg-laying breeds...
-                    <br><strong>Free-Range Time:</strong><br>Allowing chickens to free-range offers numerous benefits, including improved health and access to natural food sources...
-                    <br><strong>Coop Sanitation Instructions:</strong><br>Daily, weekly, and monthly cleaning routines keep the coop safe and healthy for your flock...
-                </p>
-            </div>
-        </section>
-    </main>
+    </section>
 
-    <script>
-        // JavaScript for Collapsible Sections
-        const headers = document.querySelectorAll('.collapsible-header');
+    <!-- Part 3 -->
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Part 3: Nutrition, Feeding, and Processing Timelines</h2>
+        <div class="collapsible-content">
+            <p class="preview">Proper nutrition and feeding are key to healthy poultry...</p>
+            <p class="full-content">
+                <strong>Feed Requirements for Jersey Giants and Ayam Cemani:</strong><br>Proper nutrition is vital for maintaining the health and productivity of your hens. A balanced diet ensures that hens have the energy and nutrients they need for egg production, growth, and overall well-being.
+                <br><strong>Timelines for Growing and Processing:</strong><br>The time it takes for chickens to reach maturity and the best time to process them depends on the breed and the purpose (egg-laying or meat production).
+            </p>
+        </div>
+    </section>
 
-        headers.forEach(header => {
-            header.addEventListener('click', function () {
-                const content = this.nextElementSibling;
-                const fullContent = content.querySelector('.full-content');
-                const isExpanded = content.classList.toggle('expanded');
+    <!-- Part 4 -->
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Part 4: Sunlight, Free-Range Time, and Coop Sanitation</h2>
+        <div class="collapsible-content">
+            <p class="preview">Sunlight and sanitation are crucial for a healthy coop environment...</p>
+            <p class="full-content">
+                <strong>Sunlight Times:</strong><br>Sunlight is essential for the health and productivity of chickens, particularly for egg-laying breeds like Jersey Giants and Ayam Cemani. Sunlight exposure helps regulate the hens' internal clocks, promoting egg production and overall well-being.
+                <br><strong>Free-Range Time:</strong><br>Allowing chickens to free-range offers numerous benefits, including improved health, mental stimulation, and access to natural food sources.
+                <br><strong>Coop Sanitation Instructions:</strong><br>Maintaining a clean coop is essential for the health and well-being of your flock. Daily, weekly, and monthly cleaning routines ensure a healthy environment for your hens.
+            </p>
+        </div>
+    </section>
+</main>
 
-                if (isExpanded) {
-                    fullContent.style.display = 'block';
-                    content.style.display = 'block';
-                    content.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    fullContent.style.display = 'none';
-                    content.style.display = 'none';
-                }
-            });
+<script>
+    // Collapsible Sections Functionality
+    const headers = document.querySelectorAll('.collapsible-header');
+
+    headers.forEach(header => {
+        header.addEventListener('click', function () {
+            const content = this.nextElementSibling;
+            const fullContent = content.querySelector('.full-content');
+            const isExpanded = content.classList.toggle('expanded');
+
+            // Smoothly show or hide the full content
+            if (isExpanded) {
+                fullContent.style.display = 'block';
+                content.style.display = 'block';
+                content.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                fullContent.style.display = 'none';
+                content.style.display = 'none';
+            }
         });
+    });
+</script>
 
-        // Function to create and animate eggs
-        const chicken = document.querySelector('.chicken');
-        chicken.addEventListener('animationiteration', function () {
-            const egg = document.createElement('div');
-            egg.classList.add('egg');
-            egg.style.left = `${Math.random() * 100}%`;
-            header.appendChild(egg);
-
-            setTimeout(() => {
-                egg.remove();
-            }, 3000);
-        });
-    </script>
 </body>
 </html>
