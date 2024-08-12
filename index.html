@@ -34,8 +34,8 @@
 
         .star {
             position: absolute;
-            width: 6px; /* Three times larger */
-            height: 6px;
+            width: 1.5px; /* Half the previous size */
+            height: 1.5px;
             background-color: #000000;
             border-radius: 50%;
             opacity: 0;
@@ -231,55 +231,25 @@
             text-align: left;
         }
 
-        .collapsible-section {
+        .introduction {
             background-color: #333;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .collapsible-header {
-            font-size: 1.5em;
-            color: #e0e0e0;
-            padding: 15px;
-            cursor: pointer;
-            background-color: #444;
-            margin: 0;
-        }
-
-        .collapsible-content {
-            padding: 15px;
-            display: none; /* Initially hidden */
-            background-color: #555;
             color: #d0d0d0;
-            line-height: 1.6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
 
-        .collapsible-content p {
-            margin: 10px 0;
+        .introduction h2 {
+            color: #e0e0e0;
+            font-size: 1.8em;
+            margin-bottom: 10px;
         }
 
-        /* Text preview styles */
-        .collapsible-content .preview {
-            display: inline;
-        }
-
-        .collapsible-content.expanded .preview {
-            display: none; /* Hide the preview once expanded */
-        }
-
-        .collapsible-content.expanded .full-content {
-            display: block;
-        }
-
-        .collapsible-content .full-content {
-            display: none;
-        }
-
-        /* Hover effects */
-        .collapsible-header:hover {
-            background-color: #555;
+        .introduction p {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            text-align: justify;
         }
 
         @media (max-width: 768px) {
@@ -302,14 +272,6 @@
             nav a {
                 flex: 1 1 auto;
             }
-
-            .collapsible-header {
-                font-size: 1.2em;
-            }
-
-            .collapsible-content {
-                padding: 10px;
-            }
         }
     </style>
 </head>
@@ -323,7 +285,7 @@
     </select>
 </div>
 
-<!-- Enhanced Header with 3D Cube, Search Bar, and Larger Stars -->
+<!-- Enhanced Header with 3D Cube, Search Bar, and Stars -->
 <header id="header">
     <div class="search-bar">
         <input type="text" placeholder="Search...">
@@ -379,14 +341,12 @@
 
 <!-- Main Content Section -->
 <main>
-    <section class="collapsible-section">
-        <h2 class="collapsible-header">Apollo and Dionysus: The Balance of Forces</h2>
-        <div class="collapsible-content">
-            <p class="preview">Friedrich Nietzsche, in <em>The Birth of Tragedy</em>, explores the symbolic struggle between Apollo and Dionysus, two gods...</p>
-            <p class="full-content">Friedrich Nietzsche, in <em>The Birth of Tragedy</em>, explores the symbolic struggle between Apollo and Dionysus, two gods representing fundamental and opposing forces in human life. Apollo, the god of reason, clarity, and order, embodies the principle of form and structure. Dionysus, on the other hand, is the god of intoxication, chaos, and overflowing passion, symbolizing the life force that transcends the boundaries of the rational.
-            Nietzsche argues that the true greatness of Greek culture lay in its ability to balance these forces, allowing Apollonian serenity to coexist with Dionysian ecstasy. This balance between order and chaos, reason and passion, is essential not only for artistic creation but also for a fully realized life.
-            In The Foundation, we adopt this Nietzschean dialectic, recognizing that human growth arises from the harmonious integration of these dual forces.</p>
-        </div>
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <h2>Apollo and Dionysus: The Balance of Forces</h2>
+        <p>Friedrich Nietzsche, in <em>The Birth of Tragedy</em>, explores the symbolic struggle between Apollo and Dionysus, two gods representing fundamental and opposing forces in human life. Apollo, the god of reason, clarity, and order, embodies the principle of form and structure. Dionysus, on the other hand, is the god of intoxication, chaos, and overflowing passion, symbolizing the life force that transcends the boundaries of the rational.</p>
+        <p>Nietzsche argues that the true greatness of Greek culture lay in its ability to balance these forces, allowing Apollonian serenity to coexist with Dionysian ecstasy. This balance between order and chaos, reason and passion, is essential not only for artistic creation but also for a fully realized life.</p>
+        <p>In The Foundation, we adopt this Nietzschean dialectic, recognizing that human growth arises from the harmonious integration of these dual forces. This philosophical foundation serves as a guide for our community, where reason and passion, order and creativity, coexist and complement each other, fostering an environment of holistic growth and fulfillment.</p>
     </section>
 
     <section class="collapsible-section">
