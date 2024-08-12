@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoicism - Community of the Black Cube</title>
+    <title>Comprehensive Guide to Stoicism</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
@@ -29,14 +29,14 @@
             position: relative;
             font-family: 'Merriweather', serif;
             overflow: hidden;
-            height: 400px; /* Increased height for better layout */
+            height: 400px;
         }
 
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: #000000;
+            width: 4px;
+            height: 4px;
+            background-color: #FFD700; /* Yellow stars */
             border-radius: 50%;
             opacity: 0;
             animation: twinkle 2s infinite ease-in-out;
@@ -60,11 +60,11 @@
         .cube {
             width: 60px;
             height: 60px;
-            margin: 0 auto; /* Center the cube horizontally */
+            margin: 0 auto;
             transform-style: preserve-3d;
             animation: spin 20s infinite linear;
             position: relative;
-            top: 100px; /* Moved cube lower */
+            top: 100px;
         }
 
         .cube div {
@@ -89,14 +89,14 @@
 
         h1 {
             font-size: 1.5em;
-            margin: 120px 0 10px; /* Significantly lowered the title */
+            margin: 120px 0 10px;
             color: #000000;
             transition: transform 0.2s ease-in-out;
         }
 
         h1:hover {
             transform: rotate(-3deg) translateX(2px);
-            animation: shake 0.7s; /* Increased shake duration */
+            animation: shake 0.7s;
             animation-iteration-count: 1;
         }
 
@@ -112,61 +112,6 @@
             80% { transform: translate(10px, -10px); }
             90% { transform: translate(-10px, -10px); }
             100% { transform: translate(0, 0); }
-        }
-
-        .search-bar {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            transform: translateY(0%);
-            display: flex; /* Use flexbox to align items */
-            align-items: center;
-            margin-bottom: 20px; /* Space below the search bar */
-        }
-
-        .search-bar input[type="text"] {
-            padding: 8px;
-            font-size: 0.9em;
-            border: none;
-            border-radius: 5px;
-            background-color: #333333;
-            color: #ffffff;
-            width: 150px;
-            margin-right: 5px; /* Space between input and button */
-        }
-
-        .search-bar button {
-            padding: 8px 10px;
-            font-size: 0.9em;
-            border: none;
-            border-radius: 5px;
-            background-color: #444444;
-            color: #e0e0e0;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: flex; /* Align icon inside button */
-            align-items: center;
-            justify-content: center;
-        }
-
-        .search-bar button:hover {
-            background-color: #555555;
-        }
-
-        .language-switcher {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            color: #000000;
-        }
-
-        .language-switcher select {
-            padding: 5px;
-            font-size: 0.9em;
-            border: 1px solid #333;
-            background-color: #ffffff;
-            color: #000000;
-            cursor: pointer;
         }
 
         nav {
@@ -231,31 +176,55 @@
             text-align: left;
         }
 
-        h2 {
-            color: #e0e0e0;
-            font-size: 1.75em;
-            margin-top: 30px;
+        .collapsible-section {
+            background-color: #333;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        h3 {
-            color: #e0e0e0;
+        .collapsible-header {
             font-size: 1.5em;
-            margin-top: 20px;
+            color: #e0e0e0;
+            padding: 15px;
+            cursor: pointer;
+            background-color: #444;
+            margin: 0;
         }
 
-        p {
-            margin: 20px 0;
+        .collapsible-content {
+            padding: 15px;
+            display: none;
+            background-color: #555;
             color: #d0d0d0;
-            font-size: 1.1em;
+            line-height: 1.6;
         }
 
-        ul {
-            margin: 20px 0;
-            padding-left: 20px;
-        }
-
-        li {
+        .collapsible-content p {
             margin: 10px 0;
+        }
+
+        /* Text preview styles */
+        .collapsible-content .preview {
+            display: inline;
+        }
+
+        .collapsible-content.expanded .preview {
+            display: none;
+        }
+
+        .collapsible-content.expanded .full-content {
+            display: block;
+        }
+
+        .collapsible-content .full-content {
+            display: none;
+        }
+
+        /* Hover effects */
+        .collapsible-header:hover {
+            background-color: #555;
         }
 
         @media (max-width: 768px) {
@@ -267,10 +236,6 @@
                 font-size: 1.2em;
             }
 
-            .search-bar input[type="text"] {
-                width: 100%;
-            }
-
             nav {
                 flex-direction: column;
             }
@@ -279,165 +244,110 @@
                 flex: 1 1 auto;
             }
 
-            h2 {
-                font-size: 1.5em;
+            .collapsible-header {
+                font-size: 1.2em;
             }
 
-            h3 {
-                font-size: 1.25em;
+            .collapsible-content {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <select onchange="changeLanguage(this)">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-        </select>
-    </div>
 
-    <!-- Enhanced<!-- Navigation Bar with Subcategories -->
+<!-- Enhanced Header with 3D Cube, Search Bar, and Stars -->
+<header id="header">
+    <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+    <h1>Comprehensive Guide to Stoicism</h1>
+</header>
+
+<!-- Navigation Bar with Subcategories -->
 <nav>
     <a href="index.html">Home</a>
-    
-    <!-- Essential Guides and Planning -->
-    <div class="dropdown">
-        <a href="#guides" class="dropbtn">Essential Guides and Planning</a>
-        <div class="dropdown-content">
-            <a href="poultry.html">Poultry</a>
-            <a href="herbalism.html">Herbalism</a>
-        </div>
-    </div>
-    
-    <!-- Magic of the Black Cube -->
-    <div class="dropdown">
-        <a href="#magic" class="dropbtn">Magic of the Black Cube</a>
-        <div class="dropdown-content">
-            <a href="saturn.html">Saturn</a>
-            <a href="kybalion.html">Kybalion</a>
-        </div>
-    </div>
-    
-    <!-- Philosophy of the Black Cube -->
+    <a href="poultry.html">Poultry</a>
+    <a href="herbalism.html">Herbalism</a>
+    <a href="#guides">Essential Guides and Planning</a>
+    <a href="#magic">Magic of the Black Cube</a>
+    <a href="stoicism.html">Stoicism</a>
     <a href="#philosophy">Philosophy of the Black Cube</a>
-    
-    <!-- Psychology of the Black Cube -->
-    <div class="dropdown">
-        <a href="#psychology" class="dropbtn">Psychology of the Black Cube</a>
-        <div class="dropdown-content">
-            <a href="stoicism.html">Stoicism</a>
-            <a href="jung.html">Jung</a>
-        </div>
-    </div>
-
+    <a href="#psychology">Psychology of the Black Cube</a>
     <a href="#recruitment">Recruitment</a>
 </nav>
 
+<!-- Main Content Section -->
 <main>
     <h2>Introduction to Stoicism</h2>
     <p>Stoicism is an ancient philosophy that teaches the development of self-control and fortitude as a means of overcoming destructive emotions. The Stoic philosophy is based on the idea that we don't control and cannot rely on external events, only ourselves and our responses.</p>
-    
-    <h2>Prologue: The Golden Age of Rome</h2>
-    <p>In the annals of human history, there has never been a civilization that shone as brightly as Rome during its Golden Age. This was an era when the heart of the world pulsed within the Eternal City—a time when Rome stood not just as the center of an empire, but as the very embodiment of civilization itself. It was a time of unparalleled abundance, where the bounty of the earth flowed into Rome, filling its granaries and markets with a richness that seemed to defy the limits of the natural world.</p>
-    <p>Rome was not merely a city; it was the apex of human achievement, a beacon of hope and progress that illuminated the world. The values that drove the Romans during this time were as enduring as they were profound: Courage, discipline, and an unshakable commitment to justice were the pillars upon which the empire was built. Under the rule of Saturn, the Roman cosmo-vision was one of balance and harmony, where the heavens and the earth were in perfect alignment.</p>
-    <p>This was Rome in its Golden Age—a city of abundance, a beacon of progress, and a testament to the enduring power of human ingenuity and virtue.</p>
 
-    <h2>Epictetus: The Enchiridion and the Foundation of Stoic Practice</h2>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Prologue: The Golden Age of Rome</h2>
+        <div class="collapsible-content">
+            <p class="preview">In the annals of human history, there has never been a civilization that shone as brightly as Rome during its Golden Age...</p>
+            <p class="full-content">In the annals of human history, there has never been a civilization that shone as brightly as Rome during its Golden Age. This was an era when the heart of the world pulsed within the Eternal City—a time when Rome stood not just as the center of an empire, but as the very embodiment of civilization itself. It was a time of unparalleled abundance, where the bounty of the earth flowed into Rome, filling its granaries and markets with a richness that seemed to defy the limits of the natural world.
+            Rome was not merely a city; it was the apex of human achievement, a beacon of hope and progress that illuminated the world. The values that drove the Romans during this time were as enduring as they were profound: Courage, discipline, and an unshakable commitment to justice were the pillars upon which the empire was built. Under the rule of Saturn, the Roman cosmo-vision was one of balance and harmony, where the heavens and the earth were in perfect alignment.
+            This was Rome in its Golden Age—a city of abundance, a beacon of progress, and a testament to the enduring power of human ingenuity and virtue.</p>
+        </div>
+    </section>
 
-    <h3>1. What is within our control?</h3>
-    <p>Epictetus teaches that the key to a good life is recognizing what is within our control and what is not. We have control over our actions, judgments, desires, and aversions. Everything else—external events, the actions of others, our reputation, and even our own bodies—is beyond our control.</p>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Epictetus: The Enchiridion and the Foundation of Stoic Practice</h2>
+        <div class="collapsible-content">
+            <p class="preview">Epictetus teaches that the key to a good life is recognizing what is within our control and what is not...</p>
+            <p class="full-content">Epictetus teaches that the key to a good life is recognizing what is within our control and what is not. We have control over our actions, judgments, desires, and aversions. Everything else—external events, the actions of others, our reputation, and even our own bodies—is beyond our control.
+            The Dichotomy of Control is simple yet profound: concern yourself only with what you can control and accept what you cannot. This approach helps maintain inner peace regardless of external circumstances.
+            Living in accordance with nature means recognizing our role in the larger scheme of things and accepting the natural course of events with equanimity.
+            Epictetus emphasizes the discipline of focusing on what is within our control and letting go of what is not. This discipline extends to our desires and aversions.
+            Virtue is the highest good and the key to a fulfilling life. Cultivate the virtues of wisdom, courage, justice, and temperance.
+            Regular practice of Stoic exercises—reflection, the use of maxims, and mindfulness—helps internalize Stoic principles and apply them in daily life.
+            Amor Fati, or the love of fate, means accepting whatever happens as necessary and good. Embrace fate and view every event as an opportunity for growth.</p>
+        </div>
+    </section>
 
-    <h3>2. The Dichotomy of Control</h3>
-    <p>The Dichotomy of Control is simple yet profound: concern yourself only with what you can control and accept what you cannot. This approach helps maintain inner peace regardless of external circumstances.</p>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Epictetus: The Slave Who Became a Sage</h2>
+        <div class="collapsible-content">
+            <p class="preview">Epictetus, born into slavery, rose to become one of the most revered Stoic philosophers in history...</p>
+            <p class="full-content">Epictetus, born into slavery, rose to become one of the most revered Stoic philosophers in history. His teachings, rooted in his own life experiences, are a testament to the power of the human spirit to rise above circumstances and find true freedom in the mastery of the mind. Despite the hardships he faced, Epictetus's life and philosophy are imbued with a sense of resilience and humility that make his lessons as relevant today as they were in ancient times.
+            Epictetus was born into a life of servitude, a condition that many would see as a sentence to a life of misery and despair. However, instead of succumbing to bitterness, Epictetus chose to view his circumstances as an opportunity to practice Stoic principles. His philosophy centers around the idea that true freedom is found not in external conditions, but within the mind. Epictetus teaches that while we cannot always control what happens to us, we can control how we respond. This lesson is particularly poignant when considering the challenges he faced as a slave—his ability to maintain his dignity and inner peace in such a situation is a powerful example of resilience.
+            One of the most remarkable aspects of Epictetus's life is his humility. Despite his profound wisdom and eventual rise to a position of respect and influence, Epictetus remained grounded in the belief that he was no different from others. He never allowed his knowledge or status to inflate his ego. Instead, he consistently emphasized the importance of accepting one’s fate with grace and using it as a tool for personal growth. His life as a slave taught him that many things in life are beyond our control, but our attitude toward those things is entirely within our power.</p>
+        </div>
+    </section>
 
-    <h3>3. Living in Accordance with Nature</h3>
-    <p>Living in accordance with nature means recognizing our role in the larger scheme of things and accepting the natural course of events with equanimity.</p>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">Marcus Aurelius: Meditations and the Philosophy of a Warrior</h2>
+        <div class="collapsible-content">
+            <p class="preview">The 'inner citadel' is a metaphor for inner strength and resilience...</p>
+            <p class="full-content">The 'inner citadel' is a metaphor for inner strength and resilience. By retreating into this inner fortress, we can find peace and stability even in chaos.
+            Logos is the rational principle that governs the universe. By aligning with it, we find meaning and purpose in all events.
+            Life is short, and everything is fleeting. This awareness inspires us to live fully and focus on what truly matters.
+            Virtue is a daily commitment. Embody the virtues of wisdom, justice, courage, and temperance in all actions.
+            We are all part of a larger whole, and our actions should contribute to the well-being of the community.
+            Accept death as a natural part of life. By making peace with mortality, we live more fully in the present.
+            Reflection is central to Stoicism. Regular self-examination helps us stay mindful of our values and align our actions with them.</p>
+        </div>
+    </section>
 
-    <h3>4. The Importance of Discipline</h3>
-    <p>Epictetus emphasizes the discipline of focusing on what is within our control and letting go of what is not. This discipline extends to our desires and aversions.</p>
-
-    <h3>5. The Role of Virtue</h3>
-    <p>Virtue is the highest good and the key to a fulfilling life. Cultivate the virtues of wisdom, courage, justice, and temperance.</p>
-
-    <h3>6. The Practice of Stoic Exercises</h3>
-    <p>Regular practice of Stoic exercises—reflection, the use of maxims, and mindfulness—helps internalize Stoic principles and apply them in daily life.</p>
-
-    <h3>7. Accepting Fate (Amor Fati)</h3>
-    <p>Amor Fati, or the love of fate, means accepting whatever happens as necessary and good. Embrace fate and view every event as an opportunity for growth.</p>
-
-    <h2>Epictetus: The Slave Who Became a Sage</h2>
-    <p>Epictetus, born into slavery, rose to become one of the most revered Stoic philosophers in history. His teachings, rooted in his own life experiences, are a testament to the power of the human spirit to rise above circumstances and find true freedom in the mastery of the mind. Despite the hardships he faced, Epictetus's life and philosophy are imbued with a sense of resilience and humility that make his lessons as relevant today as they were in ancient times.</p>
-
-    <h3>The Resilience of a Slave</h3>
-    <p>Epictetus was born into a life of servitude, a condition that many would see as a sentence to a life of misery and despair. However, instead of succumbing to bitterness, Epictetus chose to view his circumstances as an opportunity to practice Stoic principles. His philosophy centers around the idea that true freedom is found not in external conditions, but within the mind. Epictetus teaches that while we cannot always control what happens to us, we can control how we respond. This lesson is particularly poignant when considering the challenges he faced as a slave—his ability to maintain his dignity and inner peace in such a situation is a powerful example of resilience.</p>
-
-    <h3>Humility and the Acceptance of Fate</h3>
-    <p>One of the most remarkable aspects of Epictetus's life is his humility. Despite his profound wisdom and eventual rise to a position of respect and influence, Epictetus remained grounded in the belief that he was no different from others. He never allowed his knowledge or status to inflate his ego. Instead, he consistently emphasized the importance of accepting one’s fate with grace and using it as a tool for personal growth. His life as a slave taught him that many things in life are beyond our control, but our attitude toward those things is entirely within our power.</p>
-
-    <h2>Marcus Aurelius: Meditations and the Philosophy of a Warrior</h2>
-
-    <h3>1. The Inner Citadel</h3>
-    <p>The 'inner citadel' is a metaphor for inner strength and resilience. By retreating into this inner fortress, we can find peace and stability even in chaos.</p>
-
-    <h3>2. Universal Reason (Logos)</h3>
-    <p>Logos is the rational principle that governs the universe. By aligning with it, we find meaning and purpose in all events.</p>
-
-    <h3>3. The Transience of Life</h3>
-    <p>Life is short, and everything is fleeting. This awareness inspires us to live fully and focus on what truly matters.</p>
-
-    <h3>4. The Practice of Virtue in Daily Life</h3>
-    <p>Virtue is a daily commitment. Embody the virtues of wisdom, justice, courage, and temperance in all actions.</p>
-
-    <h3>5. The Importance of Community</h3>
-    <p>We are all part of a larger whole, and our actions should contribute to the well-being of the community.</p>
-
-    <h3>6. Accepting Death</h3>
-    <p>Accept death as a natural part of life. By making peace with mortality, we live more fully in the present.</p>
-
-    <h3>7. The Role of Reflection</h3>
-    <p>Reflection is central to Stoicism. Regular self-examination helps us stay mindful of our values and align our actions with them.</p>
-
-    <h2>The Four Virtues of Stoicism</h2>
-
-    <h3>1. Wisdom (Sophia)</h3>
-    <p>Wisdom is the virtue of sound judgment and the ability to make decisions based on knowledge and reason. It involves understanding the nature of the world and our     <h3>2. Courage (Andreia)</h3>
-    <p>Courage is the virtue of facing fears, challenges, and adversity with a steadfast heart. It involves the ability to act rightly in the face of danger or pain, and to persevere through difficult circumstances. Courage is not just physical bravery, but also moral courage—the strength to do what is right even when it is difficult or unpopular.</p>
-    <ul>
-        <li><strong>Physical Courage:</strong> This is the ability to confront physical danger, pain, or hardship with resilience. It is the bravery shown by soldiers, athletes, and others who face physical trials.</li>
-        <li><strong>Moral Courage:</strong> This type of courage involves standing up for what is right, even when it is uncomfortable or risky. It means having the integrity to speak the truth, defend the vulnerable, and act according to one’s principles.</li>
-        <li><strong>Courage in the Face of Adversity:</strong> Stoicism teaches that courage is essential for overcoming life’s inevitable challenges. By cultivating courage, we can face life’s difficulties with strength and dignity, knowing that our character is more important than our comfort.</li>
-    </ul>
-
-    <h3>3. Justice (Dikaiosyne)</h3>
-    <p>Justice is the virtue of treating others fairly and with respect. It involves recognizing the inherent worth of every individual and acting in a way that promotes harmony and fairness in society. For Stoics, justice is not just about legal fairness, but about living in a way that contributes to the common good.</p>
-    <ul>
-        <li><strong>Social Justice:</strong> Stoics believe in the importance of contributing to society and ensuring that everyone is treated with fairness and respect. This involves being honest, fair, and considerate in all  our dealings with others.</li>
-        <li><strong>Personal Justice:</strong> This aspect of justice relates to how we treat those in our immediate circle—our family, friends, colleagues, and neighbors. It means being kind, supportive, and just in our personal relationships.</li>
-        <li><strong>Justice as Universal Law:</strong> Stoics see justice as part of the natural order of the universe. By living justly, we align ourselves with the rational and moral principles that govern the world, contributing to the greater good.</li>
-    </ul>
-
-    <h3>4. Temperance (Sôphrosynê)</h3>
-    <p>Temperance is the virtue of self-control, moderation, and balance. It involves mastering our desires and appetites, avoiding excess, and living in harmony with our natural needs. Temperance helps us maintain a sense of proportion and balance in life, ensuring that we do not become slaves to our passions or indulgences.</p>
-    <ul>
-        <li><strong>Moderation in Desires:</strong> Temperance teaches us to control our desires and avoid excess. Whether it’s food, drink, pleasure, or material possessions, temperance helps us to enjoy life’s pleasures without becoming dependent on them.</li>
-        <li><strong>Emotional Temperance:</strong> This aspect of temperance involves managing our emotions, such as anger, fear, and envy. By practicing temperance, we can respond to life’s challenges with calmness and composure, rather than being swept away by emotional extremes.</li>
-        <li><strong>Balance in Life:</strong> Stoicism encourages us to seek balance in all areas of life—work, leisure, relationships, and personal growth. Temperance allows us to live in harmony with ourselves and the world around us, ensuring that we do not pursue any single aspect of life to the detriment of others.</li>
-    </ul>
+    <section class="collapsible-section">
+        <h2 class="collapsible-header">The Four Virtues of Stoicism</h2>
+        <div class="collapsible-content">
+            <p class="preview">Wisdom is the virtue of sound judgment and the ability to make decisions based on knowledge and reason...</p>
+            <p class="full-content">Wisdom is the virtue of sound judgment and the ability to make decisions based on knowledge and reason. It involves understanding the nature of the world and our place in it, and using that understanding to guide our actions. In Stoicism, wisdom is considered the highest of all virtues, as it informs and supports the practice of all other virtues.
+            Courage is the virtue of facing fears, challenges, and adversity with a steadfast heart. It involves the ability to act rightly in the face of danger or pain, and to persevere through difficult circumstances. Courage is not just physical bravery, but also moral courage—the strength to do what is right even when it is difficult or unpopular.
+            Justice is the virtue of treating others fairly and with respect. It involves recognizing the inherent worth of every individual and acting in a way that promotes harmony and fairness in society. For Stoics, justice is not just about legal fairness, but about living in a way that contributes to the common good.
+            Temperance is the virtue of self-control, moderation, and balance. It involves mastering our desires and appetites, avoiding excess, and living in harmony with our natural needs. Temperance helps us maintain a sense of proportion and balance in life, ensuring that we do not become slaves to our passions or indulgences.</p>
+        </div>
+    </section>
 </main>
 
 <script>
-    function changeLanguage(select) {
-        var language = select.value;
-        if (language === 'es') {
-            window.location.href = 'index_es.html'; // Link to the Spanish version of the site
-        } else {
-            window.location.href = 'index.html'; // Link back to the English version
-        }
-    }
-
-    // Function to create random stars in the header
     function createStar() {
         const header = document.getElementById('header');
         const star = document.createElement('div');
@@ -446,14 +356,32 @@
         star.style.left = `${Math.random() * 100}%`;
         header.appendChild(star);
 
-        // Remove the star after animation ends
         setTimeout(() => {
             star.remove();
         }, 2000);
     }
 
-    // Create multiple stars at random intervals
-    setInterval(createStar, 100); // Adjust this value for more or fewer stars
+    setInterval(createStar, 100);
+
+    const headers = document.querySelectorAll('.collapsible-header');
+
+    headers.forEach(header => {
+        header.addEventListener('click', function () {
+            const content = this.nextElementSibling;
+            const fullContent = content.querySelector('.full-content');
+            const isExpanded = content.classList.toggle('expanded');
+
+            if (isExpanded) {
+                fullContent.style.display = 'block';
+                content.style.display = 'block';
+                content.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                fullContent.style.display = 'none';
+                content.style.display = 'none';
+            }
+        });
+    });
 </script>
+
 </body>
 </html>
