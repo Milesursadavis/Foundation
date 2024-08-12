@@ -36,8 +36,8 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: green;
-            border-radius: 50%;
+            background-color: #28a745;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
             opacity: 0;
             animation: drift 4s infinite ease-in-out;
         }
@@ -45,22 +45,22 @@
         @keyframes drift {
             0% {
                 opacity: 0;
-                transform: translateY(-20px) translateX(0px) rotate(0deg);
+                transform: translateY(-100px) translateX(0) scale(0.5);
             }
             50% {
                 opacity: 1;
-                transform: translateY(200px) translateX(100px) rotate(180deg);
+                transform: translateY(100px) translateX(100px) scale(1);
             }
             100% {
                 opacity: 0;
-                transform: translateY(400px) translateX(200px) rotate(360deg);
+                transform: translateY(200px) translateX(200px) scale(0.5);
             }
         }
 
         .cube {
             width: 60px;
             height: 60px;
-            margin: 0 auto; /* Center the cube horizontally */
+            margin: 0 auto;
             transform-style: preserve-3d;
             animation: spin 20s infinite linear;
             position: relative;
@@ -336,13 +336,13 @@
     </select>
 </div>
 
-<!-- Enhanced Header with 3D Cube, Search Bar, and Leaf Animation -->
+<!-- Enhanced Header with 3D Cube, Search Bar, and Leaves -->
 <header id="header">
     <div class="search-bar">
         <input type="text" placeholder="Search...">
         <button type="submit"><i class="fas fa-search"></i></button>
     </div>
-    <div class="cube">
+    <div class="cube" onclick="window.location.href='index.html'">
         <div class="front"></div>
         <div class="back"></div>
         <div class="right"></div>
@@ -355,11 +355,31 @@
 
 <!-- Navigation Bar with Subcategories -->
 <nav>
+    <a href="index.html">Home</a>
     <a href="#introduction">Introduction</a>
-    <a href="#plants">Medicinal Plants</a>
-    <a href="#remedies">Remedies and Applications</a>
-    <a href="#cultivation">Cultivation and Sustainability</a>
-    <a href="#integration">Integration and Modern Uses</a>
+    <div class="dropdown">
+        <a href="#plants" class="dropbtn">Medicinal Plants</a>
+        <div class="dropdown-content">
+            <a href="#echinacea">Echinacea</a>
+            <a href="#goldenseal">Goldenseal</a>
+            <a href="#yarrow">Yarrow</a>
+            <a href="#blackcohosh">Black Cohosh</a>
+            <a href="#ginseng">American Ginseng</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <a href="#fungi" class="dropbtn">Medicinal Fungi</a>
+        <div class="dropdown-content">
+            <a href="#reishi">Reishi</a>
+            <a href="#lionsmane">Lion’s Mane</a>
+            <a href="#turkeytail">Turkey Tail</a>
+            <a href="#chaga">Chaga</a>
+            <a href="#maitake">Maitake</a>
+        </div>
+    </div>
+    <a href="#remedies">Remedies</a>
+    <a href="#cultivation">Cultivation & Sustainability</a>
+    <a href="#integration">Integration & Modern Uses</a>
 </nav>
 
 <!-- Main Content Section -->
@@ -367,16 +387,26 @@
     <!-- Introduction Section -->
     <section class="introduction" id="introduction">
         <h2>Part 1: Introduction and Key Concepts</h2>
-        <p>Introduction to North American Herbalism</p>
-        <p>Herbalism has been a cornerstone of natural medicine in North America for centuries. From the indigenous tribes who first inhabited the continent to modern-day herbalists, the use of medicinal plants has been integral in treating ailments and maintaining overall health. This guide explores the rich tradition of North American herbalism, providing insight into the various plants native to the region and their healing properties.</p>
-        <p>Key Principles of Herbalism</p>
-        <p>Herbalism is guided by several key principles that are crucial for anyone looking to explore or practice this ancient art. Understanding these principles is the foundation for effectively using medicinal plants in daily life:</p>
-        <ul>
-            <li>Holistic Approach: Herbalism treats the body as a whole, rather than focusing solely on symptoms. The goal is to restore balance and harmony within the body, mind, and spirit.</li>
-            <li>Use of Whole Plants: Unlike conventional medicine, which often isolates active compounds, herbalism uses whole plants to harness the full spectrum of their medicinal properties.</li>
-            <li>Prevention Over Cure: Herbalism emphasizes prevention, using plants to strengthen the body's natural defenses and maintain health.</li>
-            <li>Respect for Nature: Herbalists work in harmony with nature, recognizing the importance of sustainable harvesting and the ethical use of natural resources.</li>
-        </ul>
+        <p>
+            Introduction to North American Herbalism<br>
+            Herbalism has been a cornerstone of natural medicine in North America for centuries. From the indigenous tribes who first inhabited the continent to modern-day herbalists, the use of medicinal plants has been integral in treating ailments and maintaining overall health. This guide explores the rich tradition of North American herbalism, providing insight into the various plants native to the region and their healing properties.
+        </p>
+        <p>
+            Key Principles of Herbalism<br>
+            Herbalism is guided by several key principles that are crucial for anyone looking to explore or practice this ancient art. Understanding these principles is the foundation for effectively using medicinal plants in daily life:
+            1. Holistic Approach: Herbalism treats the body as a whole, rather than focusing solely on symptoms. The goal is to restore balance and harmony within the body, mind, and spirit.
+            2. Use of Whole Plants: Unlike conventional medicine, which often isolates active compounds, herbalism uses whole plants to harness the full spectrum of their medicinal properties.
+            3. Prevention Over Cure: Herbalism emphasizes prevention, using plants to strengthen the body's natural defenses and maintain health.
+            4. Respect for Nature: Herbalists work in harmony with nature, recognizing the importance of sustainable harvesting and the ethical use of natural resources.
+        </p>
+        <p>
+            Guidelines for Growing Medicinal Plants in North America<br>
+            Growing medicinal plants requires an understanding of their specific needs and the conditions in which they thrive. North America's diverse climates offer a range of opportunities for cultivating these plants, whether in home gardens or larger agricultural settings. Here are some general guidelines to get started:
+            - Climate Consideration: Choose plants that are suited to your local climate. Some plants thrive in cooler regions, while others require warmer temperatures.
+            - Soil Preparation: Ensure the soil is well-drained and rich in organic matter. Many medicinal plants prefer slightly acidic to neutral pH levels.
+            - Watering Practices: Regular watering is essential, but avoid waterlogging the roots. Different plants have varying water requirements, so it's important to understand the needs of each species.
+            - Sustainable Harvesting: Practice sustainable harvesting techniques to ensure that plants continue to thrive. This includes rotating crops, using organic fertilizers, and avoiding over-harvesting.
+        </p>
     </section>
 
     <!-- Medicinal Plants Section -->
@@ -384,7 +414,7 @@
         <h2 class="collapsible-header">Part 2: Medicinal Plants and Their Benefits</h2>
         <div class="collapsible-content">
             <p class="full-content">
-                1. Echinacea (Echinacea purpurea)
+                1. Echinacea (Echinacea purpurea)<br>
                 Echinacea, also known as purple coneflower, is one of the most well-known medicinal plants native to North America. Traditionally used by indigenous tribes to treat infections and wounds, Echinacea is now commonly used to boost the immune system and reduce the duration of colds and flu.
                 - Benefits:
                 - Immune system support
@@ -394,7 +424,7 @@
                 Echinacea thrives in full sun and well-drained soil. It is drought-tolerant and can be grown in various climates, making it an excellent addition to any herbal garden.
             </p>
             <p class="full-content">
-                2. Goldenseal (Hydrastis canadensis)
+                2. Goldenseal (Hydrastis canadensis)<br>
                 Goldenseal is a perennial herb with a rich history of medicinal use. Native Americans used it as a treatment for skin diseases, digestive issues, and as a general tonic. Today, it is known for its antibacterial and anti-inflammatory properties, often used in combination with echinacea to enhance immune function.
                 - Benefits:
                 - Antibacterial and antifungal properties
@@ -404,7 +434,7 @@
                 Goldenseal prefers shady, moist environments, similar to its natural woodland habitat. It is a slow-growing plant, typically requiring three to five years to reach maturity.
             </p>
             <p class="full-content">
-                3. Yarrow (Achillea millefolium)
+                3. Yarrow (Achillea millefolium)<br>
                 Yarrow has been used for thousands of years for its medicinal properties. It is known for its ability to stop bleeding and heal wounds, as well as its anti-inflammatory and pain-relieving effects. Yarrow is also used to reduce fever, improve circulation, and as a digestive aid.
                 - Benefits:
                 - Wound healing
@@ -414,7 +444,7 @@
                 Yarrow is a hardy plant that thrives in full sun and well-drained soil. It is drought-tolerant and can grow in a variety of conditions, making it easy to cultivate.
             </p>
             <p class="full-content">
-                4. Black Cohosh (Actaea racemosa)
+                4. Black Cohosh (Actaea racemosa)<br>
                 Black Cohosh is a perennial herb native to North America, traditionally used by Native American tribes for various ailments, particularly those related to women’s health. It is known for its ability to alleviate symptoms of menopause, menstrual discomfort, and hormonal imbalances.
                 - Benefits:
                 - Relieves menopause symptoms
@@ -424,7 +454,7 @@
                 Black Cohosh prefers shady, woodland environments with moist, rich soil. It can take several years to mature, but once established, it is a hardy and low-maintenance plant.
             </p>
             <p class="full-content">
-                5. American Ginseng (Panax quinquefolius)
+                5. American Ginseng (Panax quinquefolius)<br>
                 American Ginseng is one of the most revered medicinal plants in North America, known for its adaptogenic properties. It helps the body resist stress and improves overall vitality. Ginseng is also used to support immune function, boost energy levels, and enhance mental clarity.
                 - Benefits:
                 - Adaptogen (resists stress)
@@ -436,12 +466,49 @@
         </div>
     </section>
 
-    <!-- Remedies and Applications Section -->
+    <!-- Medicinal Fungi Section -->
+    <section class="collapsible-section" id="fungi">
+        <h2 class="collapsible-header">Medicinal Fungi and Their Benefits</h2>
+        <div class="collapsible-content">
+            <p class="full-content">
+                1. Reishi (Ganoderma lucidum)<br>
+                Benefits: Known for its immune-boosting properties and ability to support overall health and longevity. Reishi is also used to reduce stress and improve sleep quality.
+                - Growing Conditions: Grows on hardwood logs, particularly oak, in a shaded, humid environment.
+                - Soil and Water: Prefers a substrate of hardwood logs; keep the logs moist but not waterlogged.
+            </p>
+            <p class="full-content">
+                2. Lion’s Mane (Hericium erinaceus)<br>
+                Benefits: Supports cognitive health, including memory and concentration, and is also known for its potential neuroprotective effects.
+                - Growing Conditions: Grows on hardwood logs or sawdust blocks in a shaded environment.
+                - Soil and Water: Requires a substrate of hardwood or sawdust; keep the substrate moist, especially during the fruiting stage.
+            </p>
+            <p class="full-content">
+                3. Turkey Tail (Trametes versicolor)<br>
+                Benefits: Supports immune health and has been researched for its potential role in cancer treatment.
+                - Growing Conditions: Grows on dead or decaying hardwood, often in shaded, moist environments.
+                - Soil and Water: Prefers a hardwood substrate; ensure consistent moisture for optimal growth.
+            </p>
+            <p class="full-content">
+                4. Chaga (Inonotus obliquus)<br>
+                Benefits: Known for its antioxidant properties, Chaga is used to boost the immune system, fight inflammation, and support overall health.
+                - Growing Conditions: Grows naturally on birch trees in cold climates. Chaga is typically harvested from wild trees.
+                - Soil and Water: Since Chaga is primarily wild-harvested, it doesn’t require soil or watering. However, maintaining the health of birch forests is crucial for sustainable harvesting.
+            </p>
+            <p class="full-content">
+                5. Maitake (Grifola frondosa)<br>
+                Benefits: Supports immune function, helps regulate blood sugar levels, and may aid in weight management. It’s also known for its rich, savory flavor in culinary use.
+                - Growing Conditions: Grows at the base of oak, elm, or maple trees, usually in moist, shaded environments.
+                - Soil and Water: Requires a substrate of hardwood or sawdust; keep the substrate moist, especially during the fruiting stage.
+            </p>
+        </div>
+    </section>
+
+    <!-- Remedies Section -->
     <section class="collapsible-section" id="remedies">
         <h2 class="collapsible-header">Part 3: Remedies and Applications</h2>
         <div class="collapsible-content">
             <p class="full-content">
-                Making Tinctures
+                Making Tinctures<br>
                 Tinctures are concentrated herbal extracts made by soaking the bark, berries, leaves, or roots from one or more plants in alcohol or vinegar. The alcohol pulls out the active ingredients in the plant parts, concentrating them as a liquid.
                 - How to Make a Tincture:
                 1. Choose Your Herb: Select herbs such as Echinacea, Goldenseal, or Yarrow.
@@ -451,7 +518,7 @@
                 5. Strain and Bottle: After 4-6 weeks, strain the liquid through cheesecloth into a clean jar, then transfer it to a dark glass bottle for storage. Label the bottle with the herb name and date.
             </p>
             <p class="full-content">
-                Making Herbal Teas
+                Making Herbal Teas<br>
                 Herbal teas, or infusions, are one of the simplest ways to use medicinal herbs. They provide soothing therapeutic effects and are easy to prepare.
                 - How to Make an Herbal Tea:
                 1. Select Your Herbs: Common choices include Yarrow, Black Cohosh, and American Ginseng.
@@ -460,7 +527,7 @@
                 4. Steep and Serve: Cover the cup and let it steep for 5-10 minutes. Strain and enjoy the tea.
             </p>
             <p class="full-content">
-                Making Salves
+                Making Salves<br>
                 Salves are soothing balms made with infused oils, beeswax, and essential oils. They are used to heal and protect the skin.
                 - How to Make a Salve:
                 1. Infuse the Oil: Infuse your chosen herbs (e.g., Calendula, Comfrey) in a carrier oil by soaking them in the oil for several weeks or gently heating them.
@@ -476,18 +543,18 @@
         <h2 class="collapsible-header">Part 4: Cultivation and Sustainability</h2>
         <div class="collapsible-content">
             <p class="full-content">
-                Best Practices for Sustainable Herbal Farming
+                Best Practices for Sustainable Herbal Farming<br>
                 Sustainable farming practices ensure that medicinal plants can be cultivated without harming the environment. This includes crop rotation, organic fertilization, and water conservation techniques.
                 - Crop Rotation: Rotating crops prevents soil depletion and reduces the need for chemical fertilizers. For example, after growing heavy feeders like Echinacea, consider planting nitrogen-fixing plants such as clover or beans.
                 - Organic Fertilization: Use compost, aged manure, and other natural fertilizers to nourish the soil without introducing harmful chemicals. This practice enhances soil fertility and supports healthy plant growth.
                 - Water Conservation: Implement drip irrigation systems to reduce water usage and prevent soil erosion. Mulching around plants can help retain moisture and reduce the need for frequent watering.
             </p>
             <p class="full-content">
-                Harvesting and Storage
+                Harvesting and Storage<br>
                 Proper harvesting and storage techniques are crucial for maintaining the potency of medicinal herbs.
                 - Harvesting:
                 - Timing: Pick herbs at their peak potency, usually in the morning after the dew has dried but before the sun becomes too hot.
-                - Tools: Use sharp scissors or knives to harvest herbs cleanly and efficiently, minimizing damage  to the plants.
+                - Tools: Use sharp scissors or knives to harvest herbs cleanly and efficiently, minimizing damage to the plants.
                 - Drying:
                 - Method: Hang herbs in small bunches in a warm, well-ventilated area away from direct sunlight. Alternatively, use a dehydrator set to a low temperature.
                 - Duration: Allow herbs to dry completely, which can take several days to weeks, depending on the herb and drying conditions.
@@ -504,7 +571,7 @@
         <h2 class="collapsible-header">Part 5: Integration and Modern Uses</h2>
         <div class="collapsible-content">
             <p class="full-content">
-                Incorporating Herbalism into Daily Life
+                Incorporating Herbalism into Daily Life<br>
                 Herbalism can be easily integrated into daily life by using herbal remedies for common ailments, cooking with medicinal herbs, and incorporating them into self-care routines.
                 - Herbal Remedies:
                 - Apothecary: Keep a small apothecary of commonly used tinctures, teas, and salves for quick access when needed. Popular choices might include Echinacea tincture for immune support, Yarrow salve for wound healing, and Ginseng tea for energy.
@@ -513,7 +580,7 @@
                 - Infusions: Incorporate herbal infusions into recipes, such as adding chamomile tea to a soup or using lavender-infused honey in desserts.
             </p>
             <p class="full-content">
-                Case Studies and Examples
+                Case Studies and Examples<br>
                 - Case Study 1: Home Herbal Garden: A small suburban household uses a combination of Echinacea, Yarrow, and Black Cohosh in their home garden. By following sustainable practices like composting and rainwater collection, they manage to maintain a year-round supply of these herbs for family use.
                 - Case Study 2: Herbal Remedies in Urban Settings: An urban resident grows herbs like mint, basil, and lemon balm in small containers on a balcony. They create tinctures and teas for personal use, demonstrating that even limited space can support herbal practices.
             </p>
@@ -558,6 +625,7 @@
             const fullContent = content.querySelector('.full-content');
             const isExpanded = content.classList.toggle('expanded');
 
+            // Smoothly show or hide the full content
             if (isExpanded) {
                 fullContent.style.display = 'block';
                 content.style.display = 'block';
