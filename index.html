@@ -3,167 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community of the Black Cube</title>
+    <title>The Community of the Black Cube</title>
+
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Link to FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Styles for the page layout, fonts, colors, responsiveness, and header enhancements -->
     <style>
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #121212;
             color: #e0e0e0;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
+
+        /* Enhanced Header Styles */
         header {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 20px 20px;
             text-align: center;
-            font-size: 2em;
-            letter-spacing: 0.1em;
-        }
-        nav {
-            background-color: #333333;
-            padding: 15px 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline-block;
             position: relative;
+            font-family: 'Merriweather', serif;
+            overflow: hidden;
         }
-        nav ul li a {
+
+        /* Spinning 3D Cube */
+        .cube {
+            width: 50px;
+            height: 50px;
+            margin: 10px auto;
+            transform-style: preserve-3d;
+            animation: spin 10s infinite linear;
+        }
+
+        .cube div {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #000000;
+            border: 1px solid #333;
+        }
+
+        .cube .front  { transform: translateZ(25px); }
+        .cube .back   { transform: rotateY(180deg) translateZ(25px); }
+        .cube .right  { transform: rotateY(90deg) translateZ(25px); }
+        .cube .left   { transform: rotateY(-90deg) translateZ(25px); }
+        .cube .top    { transform: rotateX(90deg) translateZ(25px); }
+        .cube .bottom { transform: rotateX(-90deg) translateZ(25px); }
+
+        @keyframes spin {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to   { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        h1 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #000000;
+        }
+
+        /* Search Bar moved to the top right */
+        .search-bar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            background-color: #333333;
+            color: #ffffff;
+            width: 200px;
+        }
+
+        .search-bar button {
+            padding: 8px 12px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            background-color: #444444;
             color: #e0e0e0;
-            padding: 15px 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #555555;
+        }
+
+        /* Navigation bar styling */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: #333333;
+            padding: 10px 0;
+            align-items: center;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            padding: 8px 15px;
             text-decoration: none;
             text-transform: uppercase;
             margin: 5px;
             border-radius: 5px;
             background-color: #444444;
             transition: background-color 0.3s ease;
-            display: block;
+            flex: 1 1 auto;
+            text-align: center;
+            min-width: 100px;
         }
-        nav ul li a:hover {
+
+        nav a:hover, .dropdown:hover .dropbtn {
             background-color: #555555;
         }
-        nav ul li ul {
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
             display: none;
             position: absolute;
             background-color: #444444;
             min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
-            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: #e0e0e0;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
             text-align: left;
         }
-        nav ul li ul li {
+
+        .dropdown-content a:hover {
+            background-color: #555555;
+        }
+
+        .dropdown:hover .dropdown-content {
             display: block;
         }
-        nav ul li ul li a {
-            padding: 12px 16px;
-            border-bottom: 1px solid #333;
-        }
-        nav ul li ul li a:last-child {
-            border-bottom: none;
-        }
-        nav ul li:hover ul {
-            display: block;
-        }
+
         main {
-            padding: 30px;
+            padding: 20px;
             text-align: center;
-            font-family: 'Georgia', serif;
         }
-        h1 {
-            font-size: 2em;
-            margin: 0;
-            padding: 20px 0;
-            font-family: 'Georgia', serif;
-        }
+
         h2 {
             color: #e0e0e0;
-            font-size: 1.75em;
-            font-family: 'Georgia', serif;
+            font-size: 1.5em;
         }
+
         p {
             margin: 20px 0;
             text-align: left;
             color: #d0d0d0;
             font-size: 1.1em;
-            font-family: 'Georgia', serif;
         }
 
-        /* Responsive Design */
+        /* Responsive Design for smaller screens */
         @media (max-width: 768px) {
-            nav ul li {
-                display: block;
-                text-align: center;
+            header {
+                padding: 20px 10px;
             }
-            nav ul li ul {
-                position: static;
+
+            h1 {
+                font-size: 1.2em;
+            }
+
+            .search-bar input[type="text"] {
                 width: 100%;
             }
-            nav ul li ul li a {
-                padding: 10px;
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                flex: 1 1 auto;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Community of the Black Cube</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#foundation">The Foundation</a></li>
-            <li>
-                <a href="#guides">Essential Guides and Planning</a>
-                <ul>
-                    <li><a href="poultry.html">Poultry</a></li>
-                    <li><a href="herbalism.html">Herbalism</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#magic">Magic of the Black Cube</a>
-                <ul>
-                    <li><a href="saturn.html">Saturn</a></li>
-                    <li><a href="kyballion.html">Kybalion</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#psychology">Psychology of the Black Cube</a>
-                <ul>
-                    <li><a href="jung.html">Carl Jung</a></li>
-                </ul>
-            </li>
-            <li><a href="#philosophy">Philosophy of the Black Cube</a></li>
-            <li><a href="#recruitment">Recruitment</a></li>
-        </ul>
-    </nav>
-    <main id="foundation">
-        <h2>The Foundation</h2>
-        <h2>Purpose of The Foundation</h2>
-<p>Friedrich Nietzsche, in <em>The Birth of Tragedy</em>, explores the symbolic struggle between Apollo and Dionysus, two gods representing fundamental and opposing forces in human life. Apollo, the god of reason, clarity, and order, embodies the principle of form and structure. Dionysus, on the other hand, is the god of intoxication, chaos, and overflowing passion, symbolizing the life force that transcends the boundaries of the rational.</p>
-<p>Nietzsche argues that the true greatness of Greek culture lay in its ability to balance these forces, allowing Apollonian serenity to coexist with Dionysian ecstasy. This balance between order and chaos, reason and passion, is essential not only for artistic creation but also for a fully realized life.</p>
-<p>In The Foundation, we adopt this Nietzschean dialectic, recognizing that human growth arises from the harmonious integration of these dual forces.</p>
-<p>In <em>The Burnout Society</em>, Byung-Chul Han invites us to reflect on a time when the essential characteristics of humanity seem to have faded. Traditions, festivals, and celebrations that once strengthened community and culture have eroded, giving way to a society where extreme individualism and consumerism dominate the stage. We have forgotten the importance of gathering and sharing experiences without ulterior motives, simply for the joy of company and shared existence.</p>
-<p>The German philosopher Hermann Hesse, in <em>Steppenwolf</em>, compares the human soul to a garden where flowers and weeds coexist, where the desired and the undesired are part of an integral whole. Similarly, Hesse teaches us to accept our flaws along with our strengths, embracing the totality of who we are.</p>
-<p>Charles Bukowski, through his Dirty Realism, finds beauty and hope in the darkest aspects of society. He shows us that even in the squalor of everyday life, there is a glow of humanity that deserves to be celebrated.</p>
-<p>In The Foundation, we seek to teach acceptance of human duality, recognizing both the positive and negative aspects. Hegelian dialectics remind us that all movement on Earth and in the Universe arises from the struggle of opposites, and our goal is for these opposites to coexist in harmony, allowing each individual to reach their full potential.</p>
+<!-- Enhanced Header with 3D Cube and Search Bar -->
+<header>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="cube">
+        <div class="front"></div>
+        <div class="back"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+    </div>
+    <h1>The Community of the Black Cube</h1>
+</header>
 
-<h2>Guido Ríos Díaz - Founder of The Foundation</h2>
-<p>I am Guido Ríos Díaz, and I come from Lima, Peru, a country marked by the realities of the third world. I grew up in an environment of modesty and humility, where stoicism was not a choice but a necessity. I learned through forced restraint that you cannot always have what you desire, that sometimes money is not enough, and that the desired company is not always available. Living in the third world means learning to accept discomfort, to adapt to hard beds, fragile chairs, and difficult conditions, and to appreciate the simple blessings of life.</p>
-<p>Poverty in the third world, far from fragmenting society, unites communities. People help each other, understanding that adversities are temporary and appreciating the simple blessings of health and existence. As stoicism teaches, gratitude is the foundation of our resilience.</p>
-<p>Faced with the problem of the burnout society, Saturnism proposes the practice of restraint and self-discipline. Governing oneself is the key to controlling thoughts, emotions, and fears.</p>
-
-<h2>Philosophy of Saturnism</h2>
-<p>During the golden age of the Roman Empire, the god Saturn reigned, symbolizing a philosophy and worldview profoundly different from that of neoliberal society in 2024. Saturn, known in ancient Greece as Kronos, was the god of time and agriculture. Represented with a sickle, Saturn embodies something more transcendent than simple agriculture; it is a metaphor for life itself. Agriculture reflects the hard work that begins in youth, the strength and temperance needed to withstand adverse weather, and the wisdom to harvest at the right time.</p>
-<p>Saturn, often misunderstood as the great punisher, does not punish but teaches. In his philosophy, there is no guilt, shame, or eternal condemnation; these are pernicious ideas inherited from Christianity. The philosophy of Saturnism, on the other hand, promotes justice, integrity, and temperance, aligning with the four virtues of stoicism: Wisdom, Courage, Justice, and Temperance.</p>
-
-<h2>Purpose of The Foundation</h2>
-<p>The Foundation is a community built on the four Stoic virtues: Wisdom (Sophia), Courage (Andreia), Justice (Dikaiosyne), and Temperance (Sôphrosynê). Additionally, we incorporate the teachings of Saturn, emphasizing self-restraint, governance, discipline, and pure love and kindness. Our ultimate goal is to create an environment where true kindness and love are practiced daily. We aim to cultivate a space where every individual feels valued and can grow both personally and spiritually, contributing to the collective well-being of the community.</p>
-    </main>
-</body>
-</html>
+<!-- Navigation Bar with Subcategories -->
+<nav>
+    <a href="#foundation">The Foundation</a>
+    
+    <!-- Essential Guides and Planning -->
+    <div class="dropdown">
+        <a href="#guides" class="dropbtn">Essential Guides and Planning</a>
+        <div class="dropdown-content">
+            <a href="poultry.html">Poultry</a>
+            <a href="herbalism.html">Herbalism</a>
+        </div>
+    </div>
+    
+    <!-- Magic of the Black Cube -->
+    <div class="dropdown">
+        <a href="#magic" class="dropbtn">Magic of the Black Cube</a>
+        <div class="dropdown-content">
+            <a href="saturn.html">Saturn</a>
+            <a href="kybalion.html">Kybalion</a>
+        </div>
+    </div>
+    
+    <!-- Philosophy of the Black Cube -->
+    <a href="#philosophy">Philosophy of the Black Cube</a>
+    
+    <!-- Psychology of the Black Cube -->
+    <div class="dropdown">
+        <a href="#psychology" class="dropbtn">Psychology of the Black Cube</a>
+        <div class="dropdown-content">
+            <a href="stoicism.html">Stoicism</a>
+            <a href="jung.html">Jung</a>
