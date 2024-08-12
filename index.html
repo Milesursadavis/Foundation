@@ -22,13 +22,20 @@
             letter-spacing: 0.1em;
         }
         nav {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
             background-color: #333333;
             padding: 15px 0;
+            text-align: center;
         }
-        nav a {
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul li a {
             color: #e0e0e0;
             padding: 15px 25px;
             text-decoration: none;
@@ -37,13 +44,32 @@
             border-radius: 5px;
             background-color: #444444;
             transition: background-color 0.3s ease;
-            flex: 1 1 auto;
-            text-align: center;
-            min-width: 120px;
-            font-family: 'Georgia', serif;
+            display: block;
         }
-        nav a:hover {
+        nav ul li a:hover {
             background-color: #555555;
+        }
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #444444;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            text-align: left;
+        }
+        nav ul li ul li {
+            display: block;
+        }
+        nav ul li ul li a {
+            padding: 12px 16px;
+            border-bottom: 1px solid #333;
+        }
+        nav ul li ul li a:last-child {
+            border-bottom: none;
+        }
+        nav ul li:hover ul {
+            display: block;
         }
         main {
             padding: 30px;
@@ -71,21 +97,16 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            header {
-                font-size: 1.5em;
+            nav ul li {
+                display: block;
+                text-align: center;
             }
-            nav {
-                flex-direction: column;
-                padding: 10px 0;
+            nav ul li ul {
+                position: static;
+                width: 100%;
             }
-            nav a {
-                margin: 5px 0;
-            }
-            h1 {
-                font-size: 1.75em;
-            }
-            h2 {
-                font-size: 1.5em;
+            nav ul li ul li a {
+                padding: 10px;
             }
         }
     </style>
@@ -95,27 +116,54 @@
         <h1>Community of the Black Cube</h1>
     </header>
     <nav>
-        <a href="#foundation">The Foundation</a>
-        <a href="#guides">Essential Guides and Planning</a>
-        <a href="#magic">Magic of the Black Cube</a>
-        <a href="#philosophy">Philosophy of the Black Cube</a>
-        <a href="#psychology">Psychology of the Black Cube</a>
-        <a href="#recruitment">Recruitment</a>
+        <ul>
+            <li><a href="#foundation">The Foundation</a></li>
+            <li>
+                <a href="#guides">Essential Guides and Planning</a>
+                <ul>
+                    <li><a href="poultry.html">Poultry</a></li>
+                    <li><a href="herbalism.html">Herbalism</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#magic">Magic of the Black Cube</a>
+                <ul>
+                    <li><a href="saturn.html">Saturn</a></li>
+                    <li><a href="kyballion.html">Kybalion</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#psychology">Psychology of the Black Cube</a>
+                <ul>
+                    <li><a href="jung.html">Carl Jung</a></li>
+                </ul>
+            </li>
+            <li><a href="#philosophy">Philosophy of the Black Cube</a></li>
+            <li><a href="#recruitment">Recruitment</a></li>
+        </ul>
     </nav>
     <main id="foundation">
         <h2>The Foundation</h2>
-        <p>Friedrich Nietzsche, in <em>The Birth of Tragedy</em>, explores the symbolic struggle between Apollo and Dionysus, two gods representing fundamental and opposing forces in human life. Apollo, the god of reason, clarity, and order, embodies the principle of form and structure. Dionysus, on the other hand, is the god of intoxication, chaos, and overflowing passion, symbolizing the life force that transcends the boundaries of the rational.</p>
-        <p>Nietzsche argues that the true greatness of Greek culture lay in its ability to balance these forces, allowing Apollonian serenity to coexist with Dionysian ecstasy. This balance between order and chaos, reason and passion, is essential not only for artistic creation but also for a fully realized life.</p>
-        <p>In The Foundation, we adopt this Nietzschean dialectic, recognizing that human growth arises from the harmonious integration of these dual forces.</p>
-        <p>In <em>The Burnout Society</em>, Byung-Chul Han invites us to reflect on a time when the essential characteristics of humanity seem to have faded. Traditions, festivals, and celebrations that once strengthened community and culture have eroded, giving way to a society where extreme individualism and consumerism dominate the stage. We have forgotten the importance of gathering and sharing experiences without ulterior motives, simply for the joy of company and shared existence.</p>
-        <p>The German philosopher Hermann Hesse, in <em>Steppenwolf</em>, compares the human soul to a garden where flowers and weeds coexist, where the desired and the undesired are part of an integral whole. Similarly, Hesse teaches us to accept our flaws along with our strengths, embracing the totality of who we are.</p>
-        <p>Charles Bukowski, through his Dirty Realism, finds beauty and hope in the darkest aspects of society. He shows us that even in the squalor of everyday life, there is a glow of humanity that deserves to be celebrated.</p>
-        <p>In The Foundation, we seek to teach acceptance of human duality, recognizing both the positive and negative aspects. Hegelian dialectics remind us that all movement on Earth and in the Universe arises from the struggle of opposites, and our goal is for these opposites to coexist in harmony, allowing each individual to reach their full potential.</p>
-        <p>I am Guido Ríos Díaz, and I come from Lima, Peru, a country marked by the realities of the third world. I grew up in an environment of modesty and humility, where stoicism was not a choice but a necessity. I learned through forced restraint that you cannot always have what you desire, that sometimes money is not enough, and that the desired company is not always available. Living in the third world means learning to accept discomfort, to adapt to hard beds, fragile chairs, and difficult conditions, and to appreciate the simple blessings of life.</p>
-        <p>Poverty in the third world, far from fragmenting society, unites communities. People help each other, understanding that adversities are temporary and appreciating the simple blessings of health and existence. As stoicism teaches, gratitude is the foundation of our resilience.</p>
-        <p>Faced with the problem of the burnout society, Saturnism proposes the practice of restraint and self-discipline. Governing oneself is the key to controlling thoughts, emotions, and fears.</p>
-        <p>During the golden age of the Roman Empire, the god Saturn reigned, symbolizing a philosophy and worldview profoundly different from that of neoliberal society in 2024. Saturn, known in ancient Greece as Kronos, was the god of time and agriculture. Represented with a sickle, Saturn embodies something more transcendent than simple agriculture; it is a metaphor for life itself. Agriculture reflects the hard work that begins in youth, the strength and temperance needed to withstand adverse weather, and the wisdom to harvest at the right time.</p>
-        <p>Saturn, often misunderstood as the great punisher, does not punish but teaches. In his philosophy, there is no guilt, shame, or eternal condemnation; these are pernicious ideas inherited from Christianity. The philosophy of Saturnism, on the other hand, promotes justice, integrity, and temperance, aligning with the four virtues of stoicism: Wisdom, Courage, Justice, and Temperance.</p>
+        <h2>Purpose of The Foundation</h2>
+<p>Friedrich Nietzsche, in <em>The Birth of Tragedy</em>, explores the symbolic struggle between Apollo and Dionysus, two gods representing fundamental and opposing forces in human life. Apollo, the god of reason, clarity, and order, embodies the principle of form and structure. Dionysus, on the other hand, is the god of intoxication, chaos, and overflowing passion, symbolizing the life force that transcends the boundaries of the rational.</p>
+<p>Nietzsche argues that the true greatness of Greek culture lay in its ability to balance these forces, allowing Apollonian serenity to coexist with Dionysian ecstasy. This balance between order and chaos, reason and passion, is essential not only for artistic creation but also for a fully realized life.</p>
+<p>In The Foundation, we adopt this Nietzschean dialectic, recognizing that human growth arises from the harmonious integration of these dual forces.</p>
+<p>In <em>The Burnout Society</em>, Byung-Chul Han invites us to reflect on a time when the essential characteristics of humanity seem to have faded. Traditions, festivals, and celebrations that once strengthened community and culture have eroded, giving way to a society where extreme individualism and consumerism dominate the stage. We have forgotten the importance of gathering and sharing experiences without ulterior motives, simply for the joy of company and shared existence.</p>
+<p>The German philosopher Hermann Hesse, in <em>Steppenwolf</em>, compares the human soul to a garden where flowers and weeds coexist, where the desired and the undesired are part of an integral whole. Similarly, Hesse teaches us to accept our flaws along with our strengths, embracing the totality of who we are.</p>
+<p>Charles Bukowski, through his Dirty Realism, finds beauty and hope in the darkest aspects of society. He shows us that even in the squalor of everyday life, there is a glow of humanity that deserves to be celebrated.</p>
+<p>In The Foundation, we seek to teach acceptance of human duality, recognizing both the positive and negative aspects. Hegelian dialectics remind us that all movement on Earth and in the Universe arises from the struggle of opposites, and our goal is for these opposites to coexist in harmony, allowing each individual to reach their full potential.</p>
+
+<h2>Guido Ríos Díaz - Founder of The Foundation</h2>
+<p>I am Guido Ríos Díaz, and I come from Lima, Peru, a country marked by the realities of the third world. I grew up in an environment of modesty and humility, where stoicism was not a choice but a necessity. I learned through forced restraint that you cannot always have what you desire, that sometimes money is not enough, and that the desired company is not always available. Living in the third world means learning to accept discomfort, to adapt to hard beds, fragile chairs, and difficult conditions, and to appreciate the simple blessings of life.</p>
+<p>Poverty in the third world, far from fragmenting society, unites communities. People help each other, understanding that adversities are temporary and appreciating the simple blessings of health and existence. As stoicism teaches, gratitude is the foundation of our resilience.</p>
+<p>Faced with the problem of the burnout society, Saturnism proposes the practice of restraint and self-discipline. Governing oneself is the key to controlling thoughts, emotions, and fears.</p>
+
+<h2>Philosophy of Saturnism</h2>
+<p>During the golden age of the Roman Empire, the god Saturn reigned, symbolizing a philosophy and worldview profoundly different from that of neoliberal society in 2024. Saturn, known in ancient Greece as Kronos, was the god of time and agriculture. Represented with a sickle, Saturn embodies something more transcendent than simple agriculture; it is a metaphor for life itself. Agriculture reflects the hard work that begins in youth, the strength and temperance needed to withstand adverse weather, and the wisdom to harvest at the right time.</p>
+<p>Saturn, often misunderstood as the great punisher, does not punish but teaches. In his philosophy, there is no guilt, shame, or eternal condemnation; these are pernicious ideas inherited from Christianity. The philosophy of Saturnism, on the other hand, promotes justice, integrity, and temperance, aligning with the four virtues of stoicism: Wisdom, Courage, Justice, and Temperance.</p>
+
+<h2>Purpose of The Foundation</h2>
+<p>The Foundation is a community built on the four Stoic virtues: Wisdom (Sophia), Courage (Andreia), Justice (Dikaiosyne), and Temperance (Sôphrosynê). Additionally, we incorporate the teachings of Saturn, emphasizing self-restraint, governance, discipline, and pure love and kindness. Our ultimate goal is to create an environment where true kindness and love are practiced daily. We aim to cultivate a space where every individual feels valued and can grow both personally and spiritually, contributing to the collective well-being of the community.</p>
     </main>
 </body>
 </html>
