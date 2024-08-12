@@ -34,10 +34,10 @@
 
         .leaf {
             position: absolute;
-            width: 20px;
+            width: 15px;
             height: 20px;
-            background-color: #228B22; /* Green color for leaves */
-            border-radius: 50%;
+            background-color: green;
+            clip-path: polygon(50% 0%, 60% 35%, 100% 35%, 65% 55%, 75% 100%, 50% 75%, 25% 100%, 35% 55%, 0% 35%, 40% 35%);
             opacity: 0;
             animation: drift 4s infinite ease-in-out;
         }
@@ -45,16 +45,46 @@
         @keyframes drift {
             0% {
                 opacity: 0;
-                transform: translateX(0) translateY(0);
+                transform: translateY(0) rotate(0deg);
             }
             50% {
                 opacity: 1;
-                transform: translateX(50px) translateY(100px);
+                transform: translateY(50px) rotate(180deg);
             }
             100% {
                 opacity: 0;
-                transform: translateX(100px) translateY(200px);
+                transform: translateY(100px) rotate(360deg);
             }
+        }
+
+        .cube {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            animation: spin 20s infinite linear;
+            position: relative;
+            top: 100px;
+        }
+
+        .cube div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border: 1px solid #333;
+        }
+
+        .cube .front  { transform: translateZ(30px); }
+        .cube .back   { transform: rotateY(180deg) translateZ(30px); }
+        .cube .right  { transform: rotateY(90deg) translateZ(30px); }
+        .cube .left   { transform: rotateY(-90deg) translateZ(30px); }
+        .cube .top    { transform: rotateX(90deg) translateZ(30px); }
+        .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+        @keyframes spin {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to   { transform: rotateX(360deg) rotateY(360deg); }
         }
 
         h1 {
@@ -326,32 +356,33 @@
 <!-- Navigation Bar with Subcategories -->
 <nav>
     <a href="#introduction">Introduction</a>
-    <a href="#principles">Key Principles</a>
     <a href="#plants">Medicinal Plants</a>
-    <a href="#remedies">Remedies and Applications</a>
-    <a href="#sustainability">Cultivation and Sustainability</a>
-    <a href="#integration">Integration and Modern Uses</a>
+    <a href="#remedies">Remedies</a>
+    <a href="#cultivation">Cultivation</a>
+    <a href="#integration">Integration</a>
 </nav>
 
 <!-- Main Content Section -->
 <main>
-    <!-- Introduction Section -->
     <section class="introduction" id="introduction">
-        <h2>Introduction to North American Herbalism</h2>
+        <p>Introduction to North American Herbalism</p>
         <p>Herbalism has been a cornerstone of natural medicine in North America for centuries. From the indigenous tribes who first inhabited the continent to modern-day herbalists, the use of medicinal plants has been integral in treating ailments and maintaining overall health. This guide explores the rich tradition of North American herbalism, providing insight into the various plants native to the region and their healing properties.</p>
-    </section>
-
-    <section class="collapsible-section" id="principles">
-        <h2 class="collapsible-header">Key Principles of Herbalism</h2>
-        <div class="collapsible-content">
-            <p class="full-content">
-                Herbalism is guided by several key principles that are crucial for anyone looking to explore or practice this ancient art. Understanding these principles is the foundation for effectively using medicinal plants in daily life:
-                1. Holistic Approach: Herbalism treats the body as a whole, rather than focusing solely on symptoms. The goal is to restore balance and harmony within the body, mind, and spirit.
-                2. Use of Whole Plants: Unlike conventional medicine, which often isolates active compounds, herbalism uses whole plants to harness the full spectrum of their medicinal properties.
-                3. Prevention Over Cure: Herbalism emphasizes prevention, using plants to strengthen the body's natural defenses and maintain health.
-                4. Respect for Nature: Herbalists work in harmony with nature, recognizing the importance of sustainable harvesting and the ethical use of natural resources.
-            </p>
-        </div>
+        <p>Key Principles of Herbalism</p>
+        <p>Herbalism is guided by several key principles that are crucial for anyone looking to explore or practice this ancient art. Understanding these principles is the foundation for effectively using medicinal plants in daily life:</p>
+        <p>
+            1. Holistic Approach: Herbalism treats the body as a whole, rather than focusing solely on symptoms. The goal is to restore balance and harmony within the body, mind, and spirit.
+            2. Use of Whole Plants: Unlike conventional medicine, which often isolates active compounds, herbalism uses whole plants to harness the full spectrum of their medicinal properties.
+            3. Prevention Over Cure: Herbalism emphasizes prevention, using plants to strengthen the body's natural defenses and maintain health.
+            4. Respect for Nature: Herbalists work in harmony with nature, recognizing the importance of sustainable harvesting and the ethical use of natural resources.
+        </p>
+        <p>Guidelines for Growing Medicinal Plants in North America</p>
+        <p>Growing medicinal plants requires an understanding of their specific needs and the conditions in which they thrive. North America's diverse climates offer a range of opportunities for cultivating these plants, whether in home gardens or larger agricultural settings. Here are some general guidelines to get started:</p>
+        <p>
+            - Climate Consideration: Choose plants that are suited to your local climate. Some plants thrive in cooler regions, while others require warmer temperatures.
+            - Soil Preparation: Ensure the soil is well-drained and rich in organic matter. Many medicinal plants prefer slightly acidic to neutral pH levels.
+            - Watering Practices: Regular watering is essential, but avoid waterlogging the roots. Different plants have varying water requirements, so it's important to understand the needs of each species.
+            - Sustainable Harvesting: Practice sustainable harvesting techniques to ensure that plants continue to thrive. This includes rotating crops, using organic fertilizers, and avoiding over-harvesting.
+        </p>
     </section>
 
     <section class="collapsible-section" id="plants">
@@ -359,53 +390,28 @@
         <div class="collapsible-content">
             <p class="full-content">
                 1. Echinacea (Echinacea purpurea)
-                Echinacea, also known as purple coneflower, is one of the most well-known medicinal plants native to North America. Traditionally used by indigenous tribes to treat infections and wounds, Echinacea is now commonly used to boost the immune system and reduce the duration of colds and flu.
-                - Benefits:
-                - Immune system support
-                - Anti-inflammatory properties
-                - Antioxidant effects
-                - Growing Instructions:
-                Echinacea thrives in full sun and well-drained soil. It is drought-tolerant and can be grown in various climates, making it an excellent addition to any herbal garden.
+                - Benefits: Immune system support, Anti-inflammatory properties, Antioxidant effects
+                - Growing Instructions: Echinacea thrives in full sun and well-drained soil. It is drought-tolerant and can be grown in various climates, making it an excellent addition to any herbal garden.
             </p>
             <p class="full-content">
                 2. Goldenseal (Hydrastis canadensis)
-                Goldenseal is a perennial herb with a rich history of medicinal use. Native Americans used it as a treatment for skin diseases, digestive issues, and as a general tonic. Today, it is known for its antibacterial and anti-inflammatory properties, often used in combination with echinacea to enhance immune function.
-                - Benefits:
-                - Antibacterial and antifungal properties
-                - Supports digestive health
-                - Anti-inflammatory effects
-                - Growing Instructions:
-                Goldenseal prefers shady, moist environments, similar to its natural woodland habitat. It is a slow-growing plant, typically requiring three to five years to reach maturity.
+                - Benefits: Antibacterial and antifungal properties, Supports digestive health, Anti-inflammatory effects
+                - Growing Instructions: Goldenseal prefers shady, moist environments, similar to its natural woodland habitat. It is a slow-growing plant, typically requiring three to five years to reach maturity.
             </p>
             <p class="full-content">
                 3. Yarrow (Achillea millefolium)
-                Yarrow has been used for thousands of years for its medicinal properties. It is known for its ability to stop bleeding and heal wounds, as well as its anti-inflammatory and pain-relieving effects. Yarrow is also used to reduce fever, improve circulation, and as a digestive aid.
-                - Benefits:
-                - Wound healing
-                - Anti-inflammatory properties
-                - Reduces fever
-                - Growing Instructions:
-                Yarrow is a hardy plant that thrives in full sun and well-drained soil. It is drought-tolerant and can grow in a variety of conditions, making it easy to cultivate.
+                - Benefits: Wound healing, Anti-inflammatory properties, Reduces fever
+                - Growing Instructions: Yarrow is a hardy plant that thrives in full sun and well-drained soil. It is drought-tolerant and can grow in a variety of conditions, making it easy to cultivate.
             </p>
             <p class="full-content">
                 4. Black Cohosh (Actaea racemosa)
-                Black Cohosh is a perennial herb native to North America, traditionally used by Native American tribes for various ailments, particularly those related to women’s health. It is known for its ability to alleviate symptoms of menopause, menstrual discomfort, and hormonal imbalances.
-                - Benefits:
-                - Relieves menopause symptoms
-                - Supports hormonal balance
-                - Anti-inflammatory properties
-                - Growing Instructions:
-                Black Cohosh prefers shady, woodland environments with moist, rich soil. It can take several years to mature, but once established, it is a hardy and low-maintenance plant.
+                - Benefits: Relieves menopause symptoms, Supports hormonal balance, Anti-inflammatory properties
+                - Growing Instructions: Black Cohosh prefers shady, woodland environments with moist, rich soil. It can take several years to mature, but once established, it is a hardy and low-maintenance plant.
             </p>
             <p class="full-content">
                 5. American Ginseng (Panax quinquefolius)
-                American Ginseng is one of the most revered medicinal plants in North America, known for its adaptogenic properties. It helps the body resist stress and improves overall vitality. Ginseng is also used to support immune function, boost energy levels, and enhance mental clarity.
-                - Benefits:
-                - Adaptogen (resists stress)
-                - Enhances energy and mental clarity
-                - Supports immune function
-                - Growing Instructions:
-                American Ginseng grows best in cool, shaded environments with rich, well-drained soil. It is a slow-growing plant that can take several years to reach maturity, but it is highly valued for its medicinal properties.
+                - Benefits: Adaptogen (resists stress), Enhances energy and mental clarity, Supports immune function
+                - Growing Instructions: American Ginseng grows best in cool, shaded environments with rich, well-drained soil. It is a slow-growing plant that can take several years to reach maturity, but it is highly valued for its medicinal properties.
             </p>
         </div>
     </section>
@@ -444,7 +450,7 @@
         </div>
     </section>
 
-    <section class="collapsible-section" id="sustainability">
+    <section class="collapsible-section" id="cultivation">
         <h2 class="collapsible-header">Cultivation and Sustainability</h2>
         <div class="collapsible-content">
             <p class="full-content">
@@ -490,73 +496,6 @@
             </p>
         </div>
     </section>
-
-    <section class="collapsible-section">
-        <h2 class="collapsible-header">Soil and Water Requirements</h2>
-        <div class="collapsible-content">
-            <p class="full-content">
-                1. Echinacea (Echinacea purpurea)
-                - Soil: Well-drained, sandy or loamy soil with a pH between 6.0 and 7.0.
-                - Water: Moderate watering; ensure the soil is moist but not waterlogged. Drought-tolerant once established.
-            </p>
-            <p class="full-content">
-                2. Goldenseal (Hydrastis canadensis)
-                - Soil: Rich, loamy soil with a high organic content. Prefers a pH between 5.5 and 6.5.
-                - Water: Requires consistently moist soil. Does not tolerate drought well.
-            </p>
-            <p class="full-content">
-                3. Yarrow (Achillea millefolium)
-                - Soil: Well-drained, sandy or loamy soil with a pH between 4.8 and 8.0.
-                - Water: Drought-tolerant. Requires minimal watering once established.
-            </p>
-            <p class="full-content">
-                4. Black Cohosh (Actaea racemosa)
-                - Soil: Moist, rich, and well-drained soil with a pH between 5.5 and 6.5.
-                - Water: Needs consistent moisture, especially during the growing season.
-            </p>
-            <p class="full-content">
-                5. American Ginseng (Panax quinquefolius)
-                - Soil: Cool, shaded, well-drained soil rich in organic matter with a pH between 5.0 and 6.0.
-                - Water: Requires consistent moisture but not waterlogged soil. Mulching helps retain soil moisture.
-            </p>
-        </div>
-    </section>
-
-    <section class="collapsible-section">
-        <h2 class="collapsible-header">Medicinal Fungi and Their Benefits</h2>
-        <div class="collapsible-content">
-            <p class="full-content">
-                1. Reishi (Ganoderma lucidum)
-                - Benefits: Known for its immune-boosting properties and ability to support overall health and longevity. Reishi is also used to reduce stress and improve sleep quality.
-                - Growing Conditions: Grows on hardwood logs, particularly oak, in a shaded, humid environment.
-                - Soil and Water: Prefers a substrate of hardwood logs; keep the logs moist but not waterlogged.
-            </p>
-            <p class="full-content">
-                2. Lion’s Mane (Hericium erinaceus)
-                - Benefits: Supports cognitive health, including memory and concentration, and is also known for its potential neuroprotective effects.
-                - Growing Conditions: Grows on hardwood logs or sawdust blocks in a shaded environment.
-                - Soil and Water: Requires a substrate of hardwood or sawdust; keep the substrate moist, especially during the fruiting stage.
-            </p>
-            <p class="full-content">
-                3. Turkey Tail (Trametes versicolor)
-                - Benefits: Supports immune health and has been researched for its potential role in cancer treatment.
-                - Growing Conditions: Grows on dead or decaying hardwood, often in shaded, moist environments.
-                - Soil and Water: Prefers a hardwood substrate; ensure consistent moisture for optimal growth.
-            </p>
-            <p class="full-content">
-                4. Chaga (Inonotus obliquus)
-                - Benefits: Known for its antioxidant properties, Chaga is used to boost the immune system, fight inflammation, and support overall health.
-                - Growing Conditions: Grows naturally on birch trees in cold climates. Chaga is typically harvested from wild trees.
-                - Soil and Water: Since Chaga is primarily wild-harvested, it doesn’t require soil or watering. However, maintaining the health of birch forests is crucial for sustainable harvesting.
-            </p>
-            <p class="full-content">
-                5. Maitake (Grifola frondosa)
-                - Benefits: Supports immune function, helps regulate blood sugar levels, and may aid in weight management. It’s also known for its rich, savory flavor in culinary use.
-                - Growing Conditions: Grows at the base of oak, elm, or maple trees, usually in moist, shaded environments.
-                - Soil and Water: Requires a substrate of hardwood or sawdust; keep the substrate moist, especially during the fruiting stage.
-            </p>
-        </div>
-    </section>
 </main>
 
 <script>
@@ -569,7 +508,6 @@
         }
     }
 
-    // Function to create random leaves in the header
     function createLeaf() {
         const header = document.getElementById('header');
         const leaf = document.createElement('div');
@@ -578,16 +516,13 @@
         leaf.style.left = `${Math.random() * 100}%`;
         header.appendChild(leaf);
 
-        // Remove the leaf after animation ends
         setTimeout(() => {
             leaf.remove();
         }, 4000);
     }
 
-    // Create multiple leaves at random intervals
-    setInterval(createLeaf, 500);
+    setInterval(createLeaf, 100);
 
-    // Collapsible Sections Functionality
     const headers = document.querySelectorAll('.collapsible-header');
 
     headers.forEach(header => {
