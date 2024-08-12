@@ -3,92 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poultry - Community of the Black Cube</title>
+    <title>Comprehensive Guide to Poultry - Community of the Black Cube</title>
     <style>
         body {
             font-family: 'Georgia', serif;
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #ffffff;
+            color: #121212;
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
         header {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            padding: 40px 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px;
             text-align: center;
+            font-size: 2em;
+            letter-spacing: 0.1em;
             position: relative;
-            font-family: 'Merriweather', serif;
+            height: 400px;
             overflow: hidden;
-            height: 400px; /* Adjusted height for better layout */
-        }
-
-        .cube {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto; /* Center the cube horizontally */
-            transform-style: preserve-3d;
-            animation: spin 20s infinite linear;
-            position: relative;
-            top: 80px;
-        }
-
-        .cube div {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background-color: #000000;
-            border: 1px solid #333;
-        }
-
-        .cube .front  { transform: translateZ(30px); }
-        .cube .back   { transform: rotateY(180deg) translateZ(30px); }
-        .cube .right  { transform: rotateY(90deg) translateZ(30px); }
-        .cube .left   { transform: rotateY(-90deg) translateZ(30px); }
-        .cube .top    { transform: rotateX(90deg) translateZ(30px); }
-        .cube .bottom { transform: rotateX(-90deg) translateZ(30px); }
-
-        @keyframes spin {
-            from { transform: rotateX(0deg) rotateY(0deg); }
-            to   { transform: rotateX(360deg) rotateY(360deg); }
-        }
-
-        .chicken {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 80px;
-            animation: walk 8s infinite linear;
-        }
-
-        .egg {
-            position: absolute;
-            width: 20px;
-            height: 30px;
-            background-color: #ffffcc;
-            border-radius: 50%;
-            animation: drop 2s infinite ease-in-out;
-            opacity: 0;
-        }
-
-        @keyframes walk {
-            0% { left: -100px; }
-            100% { left: 100%; }
-        }
-
-        @keyframes drop {
-            0% { opacity: 0; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(80px); }
-            100% { opacity: 0; transform: translateY(100px); }
-        }
-
-        h1 {
-            font-size: 1.5em;
-            margin: 120px 0 10px;
-            color: #ffffff;
-            transition: transform 0.2s ease-in-out;
         }
 
         nav {
@@ -124,19 +59,110 @@
             font-family: 'Georgia', serif;
         }
 
-        .introduction {
-            background-color: #333;
-            color: #d0d0d0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            line-height: 1.8;
+        h1 {
+            font-size: 2em;
+            margin: 0;
+            padding: 20px 0;
+            text-align: center;
         }
 
-        .introduction p {
-            margin-bottom: 15px;
-            font-size: 1.2em;
-            text-align: justify;
+        .chicken {
+            position: absolute;
+            bottom: 0;
+            left: -100px;
+            width: 100px;
+            height: auto;
+            background-image: url('https://freepngimg.com/thumb/chicken/1-chicken-png-images.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: walk 10s linear infinite;
+        }
+
+        @keyframes walk {
+            0% {
+                left: -100px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .egg {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background-image: url('https://freepngimg.com/thumb/egg/6-egg-png-image.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            bottom: 0;
+            animation: drop 3s ease-in-out infinite;
+        }
+
+        @keyframes drop {
+            0% {
+                opacity: 0;
+                bottom: 100%;
+            }
+            10%,
+            90% {
+                opacity: 1;
+                bottom: 50%;
+            }
+            100% {
+                opacity: 0;
+                bottom: 0;
+            }
+        }
+
+        .cube {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            animation: spin 20s infinite linear;
+            position: relative;
+            top: 20px;
+        }
+
+        .cube div {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border: 1px solid #333;
+        }
+
+        .cube .front {
+            transform: translateZ(30px);
+        }
+
+        .cube .back {
+            transform: rotateY(180deg) translateZ(30px);
+        }
+
+        .cube .right {
+            transform: rotateY(90deg) translateZ(30px);
+        }
+
+        .cube .left {
+            transform: rotateY(-90deg) translateZ(30px);
+        }
+
+        .cube .top {
+            transform: rotateX(90deg) translateZ(30px);
+        }
+
+        .cube .bottom {
+            transform: rotateX(-90deg) translateZ(30px);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
         }
 
         .collapsible-section {
@@ -158,7 +184,7 @@
 
         .collapsible-content {
             padding: 15px;
-            display: none; /* Initially hidden */
+            display: none;
             background-color: #555;
             color: #d0d0d0;
             line-height: 1.6;
@@ -168,13 +194,12 @@
             margin: 10px 0;
         }
 
-        /* Text preview styles */
         .collapsible-content .preview {
             display: inline;
         }
 
         .collapsible-content.expanded .preview {
-            display: none; /* Hide the preview once expanded */
+            display: none;
         }
 
         .collapsible-content.expanded .full-content {
@@ -185,7 +210,6 @@
             display: none;
         }
 
-        /* Hover effects */
         .collapsible-header:hover {
             background-color: #555;
         }
@@ -194,37 +218,43 @@
             header {
                 font-size: 1.5em;
             }
+
             nav {
                 flex-direction: column;
                 padding: 10px 0;
             }
+
             nav a {
                 margin: 5px 0;
             }
+
             h1 {
                 font-size: 1.75em;
             }
+
             .collapsible-header {
                 font-size: 1.2em;
             }
+
             .collapsible-content {
                 padding: 10px;
             }
         }
     </style>
 </head>
+
 <body>
-    <header>
+    <header id="header">
         <div class="cube">
             <div class="front"></div>
             <div class="back"></div>
             <div class="right"></div>
-            <div class="left"></div>
+            <div the="left"></div>
             <div class="top"></div>
             <div class="bottom"></div>
         </div>
         <h1>Comprehensive Guide to Poultry</h1>
-        <img src="chicken.png" alt="Chicken" class="chicken">
+        <div class="chicken"></div>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -236,18 +266,15 @@
         <a href="#recruitment">Recruitment</a>
     </nav>
     <main>
-        <!-- Introduction Section -->
-        <section class="introduction">
-            <p>This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop, managing hen behavior, feeding, and overall care. These two breeds are known for their unique characteristics—Jersey Giants for their large size and Ayam Cemani for their striking appearance.</p>
-        </section>
-
-        <!-- Collapsible Sections -->
+        <!-- Part 1 -->
         <section class="collapsible-section">
-            <h2 class="collapsible-header">Building a Chicken Coop</h2>
+            <h2 class="collapsible-header">Part 1: Introduction to Poultry Keeping and Building a Chicken Coop</h2>
             <div class="collapsible-content">
-                <p class="preview">Learn about the materials, tools, and size considerations for building a sturdy and safe chicken coop...</p>
+                <p class="preview">This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop and care...</p>
                 <p class="full-content">
-                    <strong>Materials and Tools:</strong>
+                    <strong>Introduction to Poultry Keeping:</strong><br>This guide provides a comprehensive overview of keeping Jersey Giants and Ayam Cemani, focusing on building a coop, managing hen behavior, feeding, and overall care. These two breeds are known for their unique characteristics—Jersey Giants for their large size and Ayam Cemani for their striking appearance.
+                    <br><strong>Building a Chicken Coop:</strong>
+                    <br><strong>Materials and Tools:</strong> To build a basic chicken coop, you will need the following materials:
                     <ul>
                         <li>Lumber: 2x4s for framing, plywood for walls, and treated wood for the base.</li>
                         <li>Hardware cloth: 1/2 inch mesh for predator-proofing the coop.</li>
@@ -257,71 +284,57 @@
                         <li>Paint or wood sealant: To protect the wood from the elements.</li>
                     </ul>
                     <strong>Coop Size and Measurements:</strong>
-                    <p>The size of your chicken coop depends on the number of hens you plan to keep. A general rule of thumb is to allow at least 4 square feet of floor space per hen inside the coop, and 8-10 square feet per hen in an outdoor run.</p>
+                    <ul>
+                        <li>Small Flock (3-4 hens): Coop size should be approximately 4x6 feet, with a run size of 4x8 feet.</li>
+                        <li>Medium Flock (6-8 hens): Coop size should be approximately 6x8 feet, with a run size of 8x10 feet.</li>
+                        <li>Large Flock (10-12 hens): Coop size should be approximately 8x12 feet, with a run size of 10x12 feet.</li>
+                    </ul>
+                    <br><strong>Providing Access to Clean Water and Food:</strong><br>Clean water and food are crucial for the health and productivity of your hens...
                 </p>
             </div>
         </section>
-
+        <!-- Part 2 -->
         <section class="collapsible-section">
-            <h2 class="collapsible-header">Hen Behavior and Management</h2>
+            <h2 class="collapsible-header">Part 2: Hen Behavior and Management</h2>
             <div class="collapsible-content">
-                <p class="preview">Understanding the pecking order and egg-laying behavior is crucial for managing a healthy flock...</p>
+                <p class="preview">Understanding hen behavior is essential for managing a healthy flock...</p>
                 <p class="full-content">
                     <strong>Understanding Hen Pecking Order:</strong>
-                    <p>The pecking order is a natural hierarchy established within a flock of hens. This social structure determines access to resources such as food, water, and roosting spots.</p>
-                    <strong>Egg-Laying Behavior:</strong>
-                    <p>Hens typically begin laying eggs around 18-24 weeks of age, although this can vary by breed.</p>
+                    <p>The pecking order is a natural hierarchy established within a flock of hens...</p>
+                    <strong>Egg-Laying Behavior and Nesting Boxes:</strong>
+                    <p>Hens typically begin laying eggs around 18-24 weeks of age...</p>
                 </p>
             </div>
         </section>
-
+        <!-- Part 3 -->
         <section class="collapsible-section">
-            <h2 class="collapsible-header">Nutrition, Feeding, and Processing</h2>
+            <h2 class="collapsible-header">Part 3: Nutrition, Feeding, and Processing Timelines</h2>
             <div class="collapsible-content">
-                <p class="preview">Proper nutrition and feeding schedules are essential for maintaining healthy poultry...</p>
+                <p class="preview">Proper nutrition and feeding are key to healthy hens, with specific guidelines for different stages of growth...</p>
                 <p class="full-content">
                     <strong>Feed Requirements:</strong>
-                    <p>Jersey Giants and Ayam Cemani have distinct nutritional needs. Chicks require a starter feed with 18-20% protein, while mature hens need a layer feed with 16% protein.</p>
+                    <p>Jersey Giants and Ayam Cemani have distinct nutritional needs...</p>
+                    <strong>Processing Timelines:</strong>
+                    <p>The time it takes for chickens to reach maturity depends on the breed and purpose...</p>
                 </p>
             </div>
         </section>
-
+        <!-- Part 4 -->
         <section class="collapsible-section">
-            <h2 class="collapsible-header">Sunlight, Free-Range Time, and Coop Sanitation</h2>
+            <h2 class="collapsible-header">Part 4: Sunlight, Free-Range Time, and Coop Sanitation</h2>
             <div class="collapsible-content">
-                <p class="preview">Sunlight exposure, free-range time, and regular coop sanitation are key to healthy poultry...</p>
+                <p class="preview">Sunlight and free-range time are critical for healthy, productive hens. Coop sanitation ensures a safe environment...</p>
                 <p class="full-content">
-                    <strong>Sunlight Exposure:</strong>
-                    <p>Chickens should have access to at least 12-14 hours of sunlight each day to maintain optimal egg production.</p>
-                    <strong>Free-Range Time:</strong>
-                    <p>Allowing chickens to free-range offers numerous benefits, including improved health, mental stimulation, and access to natural food sources.</p>
-                    <strong>Coop Sanitation:</strong>
-                    <p>Regular coop cleaning is essential to prevent the buildup of harmful bacteria and pests.</p>
+                    <strong>Sunlight Times:</strong><br>Sunlight is essential for the health and productivity of chickens, particularly for egg-laying breeds...
+                    <br><strong>Free-Range Time:</strong><br>Allowing chickens to free-range offers numerous benefits, including improved health and access to natural food sources...
+                    <br><strong>Coop Sanitation Instructions:</strong><br>Daily, weekly, and monthly cleaning routines keep the coop safe and healthy for your flock...
                 </p>
             </div>
         </section>
     </main>
 
     <script>
-        // Function to create random eggs in the header
-        function createEgg() {
-            const header = document.getElementById('header');
-            const egg = document.createElement('div');
-            egg.className = 'egg';
-            egg.style.left = `${Math.random() * 100}%`;
-            egg.style.bottom = `${Math.random() * 100}px`;
-            header.appendChild(egg);
-
-            // Remove the egg after animation ends
-            setTimeout(() => {
-                egg.remove();
-            }, 2000);
-        }
-
-        // Create multiple eggs at random intervals
-        setInterval(createEgg, 1000);
-
-        // Collapsible Sections Functionality
+        // JavaScript for Collapsible Sections
         const headers = document.querySelectorAll('.collapsible-header');
 
         headers.forEach(header => {
@@ -330,7 +343,6 @@
                 const fullContent = content.querySelector('.full-content');
                 const isExpanded = content.classList.toggle('expanded');
 
-                // Smoothly show or hide the full content
                 if (isExpanded) {
                     fullContent.style.display = 'block';
                     content.style.display = 'block';
@@ -340,6 +352,19 @@
                     content.style.display = 'none';
                 }
             });
+        });
+
+        // Function to create and animate eggs
+        const chicken = document.querySelector('.chicken');
+        chicken.addEventListener('animationiteration', function () {
+            const egg = document.createElement('div');
+            egg.classList.add('egg');
+            egg.style.left = `${Math.random() * 100}%`;
+            header.appendChild(egg);
+
+            setTimeout(() => {
+                egg.remove();
+            }, 3000);
         });
     </script>
 </body>
